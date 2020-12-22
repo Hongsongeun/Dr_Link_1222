@@ -134,17 +134,23 @@
 	<!-- /Footer -->
 
 <!-- jQuery -->
-<script src="${path}/resources/js/jquery.min.js"></script>
+<script src="${path}/resources/assets/js/jquery.min.js"></script>
 
 <!-- Bootstrap Core JS -->
-<script src="${path}/resources/js/popper.min.js"></script>
-<script src="${path}/resources/js/bootstrap.min.js"></script>
+<script src="${path}/resources/assets/js/popper.min.js"></script>
+<script src="${path}/resources/assets/js/bootstrap.min.js"></script>
 
 <!-- Slick JS -->
-<script src="${path}/resources/js/slick.js"></script>
+<script src="${path}/resources/assets/js/slick.js"></script>
+
+
+<!-- Daterangepikcer JS 
+<script src="${path}/resources/assets/js/moment.min.js"></script>
+<script src="${path}/resources/assets/plugins/daterangepicker/daterangepicker.js"></script>
+-->
 
 <!-- Custom JS -->
-<script src="${path}/resources/js/script.js"></script>
+<script src="${path}/resources/assets/js/script.js"></script>
 		
 
 </body>

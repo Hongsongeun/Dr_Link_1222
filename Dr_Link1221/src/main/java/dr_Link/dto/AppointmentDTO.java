@@ -5,8 +5,8 @@ public class AppointmentDTO {
 	private String patient_num           ;
 	private String doctor_num            ;
 	private String dep_num               ;
-	private String treatment_date        ;
-	private String treatment_time        ;
+	private String appointment_date        ;
+	private String appointment_time        ;
 	private String reg_date              ;
 	
 	public String getAppointment_num() {
@@ -33,17 +33,17 @@ public class AppointmentDTO {
 	public void setDep_num(String dep_num) {
 		this.dep_num = dep_num;
 	}
-	public String getTreatment_date() {
-		return treatment_date;
+	public String getAppointment_date() {
+		return appointment_date;
 	}
-	public void setTreatment_date(String treatment_date) {
-		this.treatment_date = treatment_date;
+	public void setAppointment_date(String appointment_date) {
+		this.appointment_date = appointment_date;
 	}
-	public String getTreatment_time() {
-		return treatment_time;
+	public String getAppointment_time() {
+		return appointment_time;
 	}
-	public void setTreatment_time(String treatment_time) {
-		this.treatment_time = treatment_time;
+	public void setAppointment_time(String appointment_time) {
+		this.appointment_time = appointment_time;
 	}
 	public String getReg_date() {
 		return reg_date;

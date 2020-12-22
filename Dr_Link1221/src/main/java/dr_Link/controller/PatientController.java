@@ -1,6 +1,5 @@
 package dr_Link.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,12 +44,6 @@ public class PatientController {
 		result = patient_dao.getPatientDTO(Integer.parseInt(result.getPatient_num()));
 		model.addAttribute("patient", result);
 		return "/patients/profile-settings.page";
-	}
-	
-	@RequestMapping("booking")
-	public String booking() {
-		
-		return "/patients/booking.page";
 	}
 	
 	/* 김다유 : patient_dashboard 페이지로 이동 - 처방기록리스트 */

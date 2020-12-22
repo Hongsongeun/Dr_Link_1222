@@ -14,5 +14,6 @@
  		<typeAlias type="dr_Link.dto.PrescriptionDTO" alias="prescriptionDTO"/>
  		<typeAlias type="dr_Link.dto.TreatmentRecordDTO" alias="treatmentRecordDTO"/>
  		<typeAlias type="dr_Link.dto.SearchDTO" alias="searchDTO"/>
+ 		<typeAlias type="dr_Link.booking.BookingDTO" alias="bookingDTO"/>
  	</typeAliases>
  </configuration>

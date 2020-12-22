@@ -18,6 +18,9 @@
 <!-- Fontawesome CSS -->
 <link rel="stylesheet" href="${path}/resources/assets/plugins/fontawesome/css/fontawesome.min.css">
 <link rel="stylesheet" href="${path}/resources/assets/plugins/fontawesome/css/all.min.css">
+		
+<!-- Daterangepikcer CSS -->
+<link rel="stylesheet" href="${path}/resources/assets/plugins/daterangepicker/daterangepicker.css">
 
 <!-- Main CSS -->
 <link rel="stylesheet" href="${path}/resources/assets/css/style.css">

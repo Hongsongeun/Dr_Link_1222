@@ -1,6 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<!DOCTYPE html><!-- Breadcrumb -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<link rel="stylesheet" href="${path}/resources/assets/css/button.css">
+<!DOCTYPE html> 
+<script>
+$(document).ready(function(){
+	// 시간 선택
+	$(".timing").click(function(){
+		$(".timing").attr("class","timing");
+		$(this).attr("class","timing selected");
+	});
+	// 예약하기 버튼
+	$(".bookingForm").submit(function(){
+		var index = $(".timing.selected").closest("li").index() - 1;
+		$(".appointment_date").val($(".day-slot > ul > li:eq(" + index + ")").find("span:eq(1)").text());
+		$(".appointment_time").val($(".timing.selected").find("span").text());
+	});
+	
+});
+</script>	
+<script>
+function myFunction() {
+  var x = document.getElementById("Demo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>	
+			<!-- Breadcrumb -->
 			<div class="breadcrumb-bar">
 				<div class="container-fluid">
 					<div class="row align-items-center">
@@ -29,10 +59,10 @@
 								<div class="card-body">
 									<div class="booking-doc-info">
 										<a href="doctor-profile" class="booking-doc-img">
-											<img src="${pageContext.request.contextPath}/resources/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+											<img src="${path}/resources/doctor/doctorImg/${doctor_profile.p_photo}" alt="User Image">
 										</a>
 										<div class="booking-info">
-											<h4><a href="doctor-profile">홍길동 의사</a></h4>
+											<h4><a href="doctor-profile">${doctor_profile.p_name } 의사</a></h4>
 											<div class="rating">
 												<i class="fas fa-star filled"></i>
 												<i class="fas fa-star filled"></i>
@@ -49,14 +79,20 @@
 							<br>
 							<div class="row">
 								<div class="col-12 col-sm-4 col-md-6">
-									<h4 class="mb-1">2020년 12월 4일</h4>
-									<p class="text-muted">금요일</p>
+									<h4 class="mb-1">${fn:split(week[0][0],"-")[0]}년 ${fn:split(week[0][0],"-")[1]}월 ${fn:split(week[0][0],"-")[2]}일</h4>
+									<p class="text-muted">${week[0][1]}</p>
 								</div>
 								<div class="col-12 col-sm-8 col-md-6 text-sm-right">
-									<div class="bookingrange btn btn-white btn-sm mb-3">
-										<i class="far fa-calendar-alt mr-2"></i>
-										<span></span>
-										<i class="fas fa-chevron-down ml-2"></i>
+									<div class="bookingrange btn btn-white btn-sm">
+										  <div class="w3-dropdown-click">
+										    <button onclick="myFunction()" class="w3-button">날짜 변경</button>
+										    <div id="Demo" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
+										      <a href="booking" class="w3-bar-item w3-button">이번 주</a>
+										      <a href="booking?week=1" class="w3-bar-item w3-button">1주 후</a>
+										      <a href="booking?week=2" class="w3-bar-item w3-button">2주 후</a>
+										      <a href="booking?week=3" class="w3-bar-item w3-button">3주 후</a>
+										    </div>
+										  </div>
 									</div>
 								</div>
                             </div>
@@ -71,34 +107,14 @@
 											<!-- Day Slot -->
 											<div class="day-slot">
 												<ul>
+												<c:forEach var="week" items="${week}">
 													<li>
-														<span>월요일</span>
-														<span class="slot-date">11 30 <small class="slot-year">2020</small></span>
+														<a href="#">
+														<span>${week[1] }</span>
+														<span class="slot-date">${week[0]}</span>
+														</a>
 													</li>
-													<li>
-														<span>화요일</span>
-														<span class="slot-date">12 1 <small class="slot-year">2020</small></span>
-													</li>
-													<li>
-														<span>수요일</span>
-														<span class="slot-date">12 2 <small class="slot-year">2020</small></span>
-													</li>
-													<li>
-														<span>목요일</span>
-														<span class="slot-date">12 3 <small class="slot-year">2020</small></span>
-													</li>
-													<li>
-														<span>금요일</span>
-														<span class="slot-date">12 4 <small class="slot-year">2020</small></span>
-													</li>
-													<li>
-														<span>토요일</span>
-														<span class="slot-date">12 5 <small class="slot-year">2020</small></span>
-													</li>
-													<li>
-														<span>일요일</span>
-														<span class="slot-date">12 6 <small class="slot-year">2020</small></span>
-													</li>
+												</c:forEach>
 												</ul>
 											</div>
 											<!-- /Day Slot -->
@@ -224,7 +240,7 @@
 														<a class="timing" href="#">
 															<span>14:00</span> <span>PM</span>
 														</a>
-														<a class="timing selected" href="#">
+														<a class="timing" href="#">
 															<span>15:00</span> <span>PM</span>
 														</a>
 														<a class="timing" href="#">
@@ -300,11 +316,21 @@
 								
                                  </div>
 							</div>
-							<!-- Submit Section -->
+						<form action="bookingSave" method="post" class="bookingForm">
+						<!--  
+							<input type="hidden" name="doctor_num(원본)" value="${doctor_profile.doctor_num }" />
+							<input type="hidden" name="dep_num(원본)" value="${doctor_profile.dep_num}" />
+						-->	
+							<input type="hidden" name="doctor_num" value="1" /> <!-- 테스트용 -->
+							<input type="hidden" name="dep_num" value="10" /> <!-- 테스트용 -->
+							<input type="hidden" name="appointment_date" class="appointment_date" value="" />
+							<input type="hidden" name="appointment_time" class="appointment_time" value="" />
+						 <!-- Submit Section -->
 							<div class="submit-section proceed-btn text-right">
-								<a href="booking-success" class="btn btn-primary submit-btn">예약하기</a>
+								<button class="btn btn-primary submit-btn" >예약하기</button>
 							</div>
 							<!-- /Submit Section -->
+						</form>
 							
 							
 						</div>

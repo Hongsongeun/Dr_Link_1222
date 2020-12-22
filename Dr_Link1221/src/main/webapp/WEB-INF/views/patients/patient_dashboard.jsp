@@ -126,7 +126,7 @@
 															</thead>
 															<tbody>
 																<!-- start for -->
-																<tr class="text-center">
+																<tr class="text-center" >
 																	<td>
 																		<h2 class="table-avatar">
 																			<a href="doctor-profile" class="avatar avatar-sm mr-2">
