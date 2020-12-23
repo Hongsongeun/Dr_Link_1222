@@ -2,7 +2,70 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html> 	
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>의료진 프로필 - Dr.Link</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		
+		<!-- Favicons -->
+		<link href="${pageContext.request.contextPath}/resources/img/favicon.png" rel="icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/fontawesome/css/all.min.css">
+		
+		<!-- Fancybox CSS -->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/fancybox/jquery.fancybox.min.css">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+		
+	<!-- 구글폰트 -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+
+<style>
+body {
+    font-family: "Nanum Gothic", sans-serif;
+}
+
+.footer-menu{
+	color:#fff;
+}
+</style>
+	
+	</head>
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+		
+			<!-- Header -->
+			
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-md-12 col-12">
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Doctor Profile</li>
+								</ol>
+							</nav>
+							<h2 class="breadcrumb-title">Doctor Profile</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
 			<!-- Page Content -->
 			<div class="content">
 				<div class="container">
@@ -13,7 +76,7 @@
 							<div class="doctor-widget">
 								<div class="doc-info-left">
 									<div class="doctor-img">
-										<img src="${path}/resources/assets/doctor/doctorImg/${doctor_profile.d_imgfile}" class="img-fluid" alt="User Image">
+										<img src="${pageContext.request.contextPath}/resources/img/doctors/doctor-thumb-02.jpg" class="img-fluid" alt="User Image">
 										
 										<!-- <div class="doctor-action">
 											<a href="javascript:void(0)" class="btn btn-white fav-btn" >
@@ -70,7 +133,7 @@
 										</a> 
 									</div>
 									<div class="clinic-booking">
-										<a class="apt-btn" href="booking?doctor_num=${doctor_profile.doctor_num }">예약하기</a>
+										<a class="apt-btn" href="booking">예약하기</a>
 									</div>
 								</div>
 							</div>
@@ -219,13 +282,13 @@
 								<div class="widget review-listing">
 									<ul class="comments-list">
 										<c:if test="${empty reviewList }">
-											작성된 리뷰가 없습니다.
+											댓글이 없습니다.
 										</c:if>
 										<c:forEach var="review" items="${reviewList}">
 										<!-- Comment List -->
 										<li>
 											<div class="comment">
-												<img class="avatar avatar-sm rounded-circle" alt="User Image" src="${path}/resources/patient/patientImg/${review.patientDTO.p_photo}">
+												<img class="avatar avatar-sm rounded-circle" alt="User Image" src="${path}/resources/assets/img/patients/${review.patientDTO.p_imgfile}">
 												<div class="comment-body">
 													<div class="meta-data">
 														<span class="comment-author">${review.patientDTO.p_name }</span>
@@ -359,7 +422,7 @@
 							<div class="call-wrapper">
 								<div class="call-inner">
 									<div class="call-user">
-										<img alt="User Image" src="${path}/resources/doctor/doctorImg/${doctor_profile.d_imgfile}" class="call-avatar">
+										<img alt="User Image" src="${pageContext.request.contextPath}/resources/img/doctors/doctor-thumb-02.jpg" class="call-avatar">
 										<h4>Dr. Darren Elder</h4>
 										<span>Connecting...</span>
 									</div>							
@@ -389,7 +452,7 @@
 							<div class="call-wrapper">
 								<div class="call-inner">
 									<div class="call-user">
-										<img class="call-avatar" src="${path}/resources/doctor/doctorImg/${doctor_profile.d_imgfile}" alt="User Image">
+										<img class="call-avatar" src="${pageContext.request.contextPath}/resources/img/doctors/doctor-thumb-02.jpg" alt="User Image">
 										<h4>Dr. Darren Elder</h4>
 										<span>Calling ...</span>
 									</div>							
@@ -407,3 +470,19 @@
 			</div>
 		</div>
 		<!-- Video Call Modal -->
+		
+		<!-- jQuery -->
+		<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+		
+		<!-- Fancybox JS -->
+		<script src="${pageContext.request.contextPath}/resources/plugins/fancybox/jquery.fancybox.min.js"></script>
+		
+		<!-- Custom JS -->
+		<script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
+		
+	</body>
+</html>

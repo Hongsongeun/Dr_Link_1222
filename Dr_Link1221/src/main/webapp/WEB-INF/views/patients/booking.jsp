@@ -59,10 +59,10 @@ function myFunction() {
 								<div class="card-body">
 									<div class="booking-doc-info">
 										<a href="doctor-profile" class="booking-doc-img">
-											<img src="${path}/resources/doctor/doctorImg/${doctor_profile.p_photo}" alt="User Image">
+											<img src="${path}/resources/doctor/doctorImg/${doctor_profile.d_imgfile}" alt="User Image">
 										</a>
 										<div class="booking-info">
-											<h4><a href="doctor-profile">${doctor_profile.p_name } 의사</a></h4>
+											<h4><a href="doctor-profile">${doctor_profile.d_name } 의사</a></h4>
 											<div class="rating">
 												<i class="fas fa-star filled"></i>
 												<i class="fas fa-star filled"></i>

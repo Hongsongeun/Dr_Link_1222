@@ -15,10 +15,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import dr_Link.doctorProfile.DoctorDTO;
+import dr_Link.doctorProfile.DoctorDaoImp;
 import dr_Link.dto.PatientDTO;
 
 @Controller
 public class BookingController {
+	
+	@Autowired
+	private DoctorDaoImp doctor_dao;
 
 	@Autowired
 	private BookingService bookingService;
@@ -54,10 +59,11 @@ public class BookingController {
 
 	@RequestMapping("patients/booking")
 	public String bookingPage(HttpServletRequest request, Model model) {
-		// 의사 프로필 읽어야함
-		
-		
-		// -----------------------------------
+		// 의사 프로필 
+		DoctorDTO doctor_profile = doctor_dao.doctor_info(Integer.parseInt(request.getParameter("doctor_num")));
+  		model.addAttribute("doctor_profile",doctor_profile);
+		  
+		// 날짜
 		List<List<String>> week = new ArrayList<List<String>>();
 		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
 		Calendar cal = Calendar.getInstance();
