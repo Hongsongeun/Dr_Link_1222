@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html> 
-<!-- Breadcrumb -->
+			<!-- Breadcrumb -->
 			<div class="breadcrumb-bar">
 				<div class="container-fluid">
 					<div class="row align-items-center">
@@ -41,6 +42,8 @@
 					<div class="row">
 						<div class="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
 						
+							<form method="post" action="search">
+							
 							<!-- Search Filter -->
 							<div class="card search-filter">
 								<div class="card-header">
@@ -48,58 +51,58 @@
 								</div>
 								<div class="card-body">
 								<div class="filter-widget">
-									<div class="cal-icon">
+									<!-- <div class="cal-icon">
 										<input type="text" class="form-control datetimepicker" placeholder="Select Date">
-									</div>			
+									</div>	 -->		
 								</div>
-								<!-- <div class="filter-widget">
+								  <div class="filter-widget">
 									<h4>성별</h4>
 									<div>
 										<label class="custom_check">
-											<input type="checkbox" name="gender_type" checked>
+											<input type="checkbox" name="d_gender" value="남">
 											<span class="checkmark"></span> 남자 의사
 										</label>
 									</div>
 									<div>
 										<label class="custom_check">
-											<input type="checkbox" name="gender_type">
+											<input type="checkbox" name="d_gender" value="여">
 											<span class="checkmark"></span> 여자 의사
 										</label>
 									</div>
-								</div> -->
+								</div> 
 								<div class="filter-widget">
 									<h4>전공별</h4>
 									<div>
 										<label class="custom_check">
-											<input type="checkbox" name="select_specialist" checked>
+											<input type="checkbox" name="dep_num" value="20">
 											<span class="checkmark"></span> 피부과
 										</label>
 									</div>
 									<div>
 										<label class="custom_check">
-											<input type="checkbox" name="select_specialist">
+											<input type="checkbox" name="dep_num" value="30">
 											<span class="checkmark"></span> 정신건강의학과
 										</label>
 									</div>
 									<div>
 										<label class="custom_check">
-											<input type="checkbox" name="select_specialist">
+											<input type="checkbox" name="dep_num" value="10">
 											<span class="checkmark"></span> 안과
 										</label>
 									</div>
 								</div>
-									<div class="btn-search">
-										<button type="button" class="btn btn-block">검색</button>
+									<div class="btn-search"> 
+										<button type="submit" class="btn btn-block" >검색</button>
 									</div>	
 								</div>
 							</div>
 							<!-- /Search Filter -->
-							
+							</form>
 						</div>
 						
 						<div class="col-md-12 col-lg-8 col-xl-9">
 						<!-- <p>${total}</p>-->
-							<c:forEach var="list" items="${list}">
+							<c:forEach var="list" items="${list}" varStatus="listStatus">
 							<!-- Doctor Widget -->
 							<div class="card">
 								<div class="card-body">
@@ -107,7 +110,7 @@
 										<div class="doc-info-left">
 											<div class="doctor-img">
 												<a href="doctor-profile">
-													<img src="resources/img/doctors/doctor-thumb-01.jpg" class="img-fluid" alt="User Image">
+													<img src="${path}/resources/doctor/doctorImg/${list.d_imgfile}" class="img-fluid" alt="User Image">
 												</a>
 											</div>
 											<div class="doc-info-cont">
@@ -115,16 +118,37 @@
 												<p class="doc-speciality" style="padding-right: 15px;">${list.d_content }<br></p>
 												<h5 class="doc-department"><img src="resources/img/specialities/specialities-05.png" class="img-fluid" alt="Speciality">${list.d_licence }</h5>
 												<div class="rating">
+												<c:forEach begin="1" end="5" step="1" varStatus="i">
+												   <c:choose>
+												      <c:when test="${review.review_rating ge i}">
+												         <i class="fas fa-star filled"></i>   
+												      </c:when>
+												      <c:otherwise>
+												         <i class="fas fa-star"></i>
+												      </c:otherwise>
+												   </c:choose>   
+												</c:forEach>
+													<!-- <i class="fas fa-star filled"></i>
 													<i class="fas fa-star filled"></i>
 													<i class="fas fa-star filled"></i>
 													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star"></i>
+													<i class="fas fa-star"></i> -->
 													<span class="d-inline-block average-rating">별점</span>
 												</div>
 												<div class="clinic-services">
-													 <span>담당분야</span> 
-													 <!-- <span>여드름</span> -->
+												 <c:choose>
+					                                <c:when test="${empty m[0]}">
+					                                    아직 정보가 입력되지 않았습니다.
+					                                </c:when> 
+					                                
+					                              <c:otherwise>
+					                              <c:set var="len" value="${fn:length(m[listStatus.index])}"/>
+					                              <c:forEach begin="0" end="${len-1}" varStatus="mmList">
+					                                 <span>${m[listStatus.index][mmList.index]}</span>
+					                              </c:forEach>
+					                              </c:otherwise>
+					                              
+					                             </c:choose> 
 												</div> 
 											</div>
 										</div>
@@ -136,8 +160,8 @@
 												</ul> -->
 											</div>
 											<div class="clinic-booking">
-												<a class="view-pro-btn" href="doctor-profile">프로필보기</a>
-												<a class="apt-btn" href="booking">예약하기</a>
+												<a class="view-pro-btn" href="doctor-profile?doctor_num=${list.doctor_num }">프로필보기</a>
+												<a class="apt-btn" href="patients/booking">예약하기</a>
 											</div>
 										</div>
 									</div>
@@ -155,7 +179,7 @@
 							<%-- page 처리  --%>
 							<%@include file="pageProcess.jsp" %>
 						</td>
-						</tr>
+						
 						</tfoot>
 				</div>
 
@@ -164,5 +188,3 @@
 					</div>
 				
 			<!-- /Page Content -->
-			
- 

@@ -2,7 +2,11 @@ package dr_Link.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,8 +24,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import dr_Link.doctor.DoctorDaoImp;
-import dr_Link.dto.DoctorDTO;
+import dr_Link.doctorProfile.DoctorDTO;
 import dr_Link.dto.Hospital_boardDTO;
+import dr_Link.dto.PageDTO;
 import dr_Link.dto.PatientDTO;
 import dr_Link.main.MainDaoInter;
 import dr_Link.patient.PatientDaoInter;
@@ -122,7 +127,7 @@ public class MainController {
 
 		String r_path = session.getServletContext().getRealPath("/");
 		System.out.println("r_path :" + r_path);
-		String img_path = "C://Users//tnpdl//OneDrive//Documents//img";
+		String img_path = "C:\\Users\\koko\\git\\Dr_Link_1222\\Dr_Link1221\\src\\main\\webapp\\resources\\patient\\profileImg\\";
 		System.out.println("img_path :" + img_path);
 		StringBuffer path = new StringBuffer();
 		path.append(r_path).append(img_path);
@@ -177,12 +182,12 @@ public class MainController {
 		return "admin/question";
 	}
 
-	@RequestMapping(value = "/search")
-	public String searchPage() {
-		List<DoctorDTO> list=doctorDaoInter.getDoctorList();
-		
-		return "search";
-	}
+//	@RequestMapping(value = "/search")
+//	public String searchPage() {
+//		List<DoctorDTO> list=doctorDaoInter.getDoctorList();
+//		
+//		return "search";
+//	}
 	
 	@RequestMapping(value = "notice")
 	public ModelAndView getH_BoardList(HttpServletRequest request, HttpSession session) {
@@ -205,5 +210,89 @@ public class MainController {
 		
 		return mv;
 	}
+	
+	// search페이지 부분
+
+		@RequestMapping(value="/search")
+		public String listSearch(PageDTO svo, Model model
+				, @RequestParam(value="nowPage", required=false , 
+				defaultValue="1") String nowPage
+				, @RequestParam(value="cntPerPage", required=false , 
+				defaultValue="5") String cntPerPage, HttpServletRequest request){
+			System.out.println("search 요청");
+			List<String> d_genderList=null;
+			List<String> dep_numList=null;
+			Map<String,List<String>> map = new HashMap<String, List<String>>();
+			String [] temp=null;
+			
+			try {
+				System.out.println("try");
+				if(request.getParameter("d_gender") != null) {
+					temp = request.getParameterValues("d_gender");
+					System.out.println("if문 "+ request.getParameterValues("d_gender"));
+					
+					d_genderList = Arrays.asList(temp);
+					map.put("d_genderList", d_genderList);
+					for(String i : d_genderList) {
+						System.out.println("for문 안: "+i);
+					}
+				}  
+				if (request.getParameter("dep_num") != null ) {
+					temp = request.getParameterValues("dep_num");
+					dep_numList = Arrays.asList(temp);
+					map.put("dep_numList", dep_numList);
+					for(String i : dep_numList) {
+						System.out.println("else if for: " + i);
+					}
+				}
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+			
+			int total = doctorDaoInter.getTotalCount();
+			
+			if(svo.getSearchType() == null) {
+				svo = new PageDTO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			}else {
+				System.out.println("searchValue:"+svo.getSearchValue());
+				svo = new PageDTO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage),svo.getSearchType(),svo.getSearchValue());
+			}
+			//System.out.println("Start :"+svo.getStart());
+			//System.out.println("End :"+svo.getEnd());
+			
+			// pagingDTO 를 날려서 받은 값 
+			List<DoctorDTO> list = doctorDaoInter.getList(svo);
+			
+			if(!map.isEmpty()) {
+				System.out.println("if문 map");
+				List<DoctorDTO> li = doctorDaoInter.getList(map);
+				if(li.size() > 0) {
+					for(DoctorDTO d : li) {
+						System.out.println("for문... "+ d.getD_gender());
+					}
+				}
+			}
+			for(DoctorDTO e : list) {
+			}
+
+			// 진료분야 출력
+//			List<String[]> m = new ArrayList<String[]>();
+//			String [] d_field = null;
+//			for (int i = 0; i<list.size();i++) {
+//				for(int j = 0; j<list.get(i).getD_field().length;j++) {
+//					if(list.get(i).getD_field()!=null) {
+//					 d_field = list.get(i).getD_field();
+//					 m.add(d_field);
+//					 }   
+//				} 	
+//			}
+			
+			
+//			model.addAttribute("m",m);
+			model.addAttribute("paging", svo);
+			model.addAttribute("list",list );
+			return "search.page";
+		}
+		
 
 }

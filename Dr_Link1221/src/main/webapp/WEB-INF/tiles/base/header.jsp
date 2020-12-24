@@ -31,7 +31,7 @@
 				
 				<ul class="main-nav" >
 					<li class="has-submenu">
-						<a href="${path}/doctor/search">의료진 소개</a>
+						<a href="${path}/search">의료진 소개</a>
 					</li>
 					<li class="has-submenu">
 						<a href="${path}/notice">공지사항<!-- <i class="fas fa-chevron-down"></i> --></a>
@@ -54,7 +54,7 @@
 						<a href="${path}/question">FAQ</a>
 					</li>
 					<li class="has-submenu">
-						<a href="${path}/patients/booking">화상진료예약</a>
+						<a href="${path}/search">화상진료예약</a>
 					</li>
 					<li class="has-submenu">
 						<a>AI 진단<i class="fas fa-chevron-down"></i></a>

@@ -5,7 +5,8 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-@Repository
+
+@Repository("reviewDao")
 public class ReviewDAOImpl implements ReviewDAO {
 	
 	@Autowired
@@ -14,7 +15,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 	@Override
 	public void addReview(Doc_ReviewDTO vo) {
 		// TODO Auto-generated method stub
-
+		ss.insert("doc_review.addReview", vo);
 	}
 
 	@Override

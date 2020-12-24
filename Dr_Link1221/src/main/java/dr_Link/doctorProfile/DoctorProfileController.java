@@ -16,12 +16,12 @@ import dr_Link.review.ReviewService;
 public class DoctorProfileController {
 	
 	@Autowired
-	private DoctorDaoImp doctor_dao;
+	private DoctorDaoInter doctor_dao;
 	
 	@Autowired
 	private ReviewService reviewService;
 	
-	@RequestMapping(value = "doctor_profile")
+	@RequestMapping(value = "doctor-profile")
 	public String doctor_profile(HttpServletRequest request, DoctorDTO vo, Model model) {
 		
 	  try {

@@ -1,5 +1,8 @@
 package dr_Link.controller;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import dr_Link.dto.DrLinkDTO;
 import dr_Link.dto.PatientDTO;
@@ -32,9 +36,39 @@ public class PatientController {
 	}
 	
 	@RequestMapping("updatePatient")
-	public String updatePatient(PatientDTO vo) {
-		patient_dao.updatePatient(vo);
+	public String updatePatient(PatientDTO vo, HttpSession session) {
 		
+		try {
+			String r_path = session.getServletContext().getRealPath("/");
+			System.out.println("r_path :" + r_path);
+			String img_path = "C:\\Users\\koko\\git\\Dr_Link_1222\\Dr_Link1221\\src\\main\\webapp\\resources\\patient\\profileImg\\";
+			System.out.println("img_path :" + img_path);
+			StringBuffer path = new StringBuffer();
+			/*
+			path.append(r_path).append(img_path);
+			path.append(oriFn);
+			*/
+			MultipartFile p_photo = vo.getFile();
+			String oriFn = p_photo.getOriginalFilename();
+			
+			StringBuffer newpath = new StringBuffer();
+			newpath.append(img_path);
+			newpath.append(oriFn);
+			vo.setP_photo(oriFn);
+			File f = new File(newpath.toString()); // ���� �̹����� ����� ���
+			
+			p_photo.transferTo(f);
+			PatientDTO p_num = (PatientDTO) session.getAttribute("user");
+			vo.setPatient_num(p_num.getPatient_num());
+			
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 		return "redirect:/patients/profile-settings?patient_num="+vo.getPatient_num();
 	}
 	
@@ -50,11 +84,13 @@ public class PatientController {
 	/* patient_dashboard에서 진료기록, 결제기록, 예약기록 담당하시는 분들 여기서 값 세팅해주세요 */
 	@RequestMapping(value = "patient_dashboard")
 	public String treatmentRecord(Model model, HttpSession session) {
-//		List<TreatmentRecordDTO> treatmentRecord = patient_dao.treatmentRecord(Integer.parseInt(request.getParameter("patient_num")));
-//		model.addAttribute("treatmentRecord", treatmentRecord);
-		PatientDTO result = (PatientDTO) session.getAttribute("user");
-		result = patient_dao.getPatientDTO(Integer.parseInt(result.getPatient_num()));
-		model.addAttribute("patient", result);
+		try {
+			PatientDTO result = (PatientDTO) session.getAttribute("user");
+			result = patient_dao.getPatientDTO(Integer.parseInt(result.getPatient_num()));
+			model.addAttribute("patient", result);
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
 		return "/patients/patient_dashboard.page";
 	}
 	

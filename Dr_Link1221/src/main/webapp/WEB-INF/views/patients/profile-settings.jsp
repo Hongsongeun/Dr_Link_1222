@@ -154,7 +154,7 @@ function execPostCode() {
 														<div class="upload-img">
 															<div class="change-photo-btn">
 																<span><i class="fa fa-upload"></i> 사진 첨부</span>
-																<input type="file" class="upload" onchange="readURL(this);">
+																<input type="file" class="upload" name="file" onchange="readURL(this);">
 															</div>
 															<small class="form-text text-muted">JPG, GIF, PNG만 허용됩니다. 최대 사이즈 2MB</small>
 														</div>
@@ -242,7 +242,6 @@ function execPostCode() {
 										<div class="submit-section">
 											<button type="submit" class="btn btn-primary submit-btn">변경 저장하기</button>
 										</div>
-										<input type="hidden" name="patient_num" value="${patient.patient_num }" >
 									</form>
 									<!-- /Profile Settings Form -->
 									

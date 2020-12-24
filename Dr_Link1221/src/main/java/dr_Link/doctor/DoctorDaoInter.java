@@ -1,8 +1,10 @@
 package dr_Link.doctor;
 
 import java.util.List;
+import java.util.Map;
 
-import dr_Link.dto.DoctorDTO;
+import dr_Link.doctorProfile.DoctorDTO;
+import dr_Link.dto.PageDTO;
 
 public interface DoctorDaoInter {
 	
@@ -20,7 +22,12 @@ public interface DoctorDaoInter {
 	// 조건
 	List<DoctorDTO> getDoctorList(DoctorDTO vo);
 		
-
+	/* public List<SearchDTO> getSearch(); */
+	public List<DoctorDTO> getList(PageDTO svo);
+	
+	public int getTotalCount();
+	
+	public List<DoctorDTO> getList(Map<String, List<String>> map);
 	
 	}
 

@@ -86,7 +86,78 @@
 		select * from doctor where d_id = #{id}
 	</select>
 
-  
+  	<!-- search -->
+  	 <!-- 의료진소개 페이징처리 및 필터링 -->
+	  <select id="list" resultType="doctorDTO" parameterType="PageDTO">
+	   select * from (
+	   select rownum r_num, a.* from 
+	   (
+	   select * from dl_doctor 
+	   <if test="searchType != null">
+	   <where>
+	   	<choose>
+	   		<when test="searchType == 1">
+	   			 d_gender = #{searchValue}
+	   		</when>
+	   		<when test="searchType == 2">
+	   			dep_num = #{searchValue}
+	   		</when>
+	   	</choose>
+	   </where>
+	   </if>
+	   
+	   order by doctor_num desc
+	   ) a
+	   ) where r_num between #{start} and #{end}
+	</select>
+	<select id="totalCount" resultType="int" parameterType="PageDTO">
+	  		select count(*) cnt from dl_doctor
+	  		<if test="searchType != null">
+	   <where>
+	   	<choose>
+	   		<when test="searchType == 1">
+	   			 d_gender = #{searchValue}
+	   		</when>
+	   		<when test="searchType == 2">
+	   			dep_num = #{searchValue}
+	   			<!--  d_name like '%'|| #{searchValue} ||'%'-->
+	   		</when>
+	   	</choose>
+	   </where>
+	   </if>
+	 </select>
+	 
+	 
+	<!-- search 파라미터 값 있을 때 -->  
+	<select id="searchList" resultType="doctorDTO" parameterType="hashmap">
+	
+		select * from (
+		   select rownum r_num, a.* from 
+		   (
+		   select * from dl_doctor 
+	   
+			<where> 
+	
+			<if test="d_genderList.size !=0">
+			d_gender in
+			<foreach collection="d_genderList" item="item" 
+			index="index" separator="," open="(" close=")">
+			#{item}
+			</foreach>
+			</if>
+			
+			<if test="dep_numList.size !=0">
+			and dep_num in
+			<foreach collection="dep_numList" item="item"
+			index="index" separator="," open="(" close=")">
+			#{item}
+			</foreach>
+			</if>
+			</where>
+			order by doctor_num desc 
+			) a
+			   ) where r_num between 1 and 15 
+	</select>
    
   
   </mapper>

@@ -16,7 +16,7 @@
 		insert into department values(#{dep_num}, #{dep_name})
 	</insert>
 	
-	<update id="addDept" parameterType="departmentDTO">
+	<update id="updateDept" parameterType="departmentDTO">
 		update department set dep_name=#{dep_name} where dep_num=#{dep_num}
 	</update>
 	

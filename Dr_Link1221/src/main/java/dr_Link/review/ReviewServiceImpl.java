@@ -2,10 +2,14 @@ package dr_Link.review;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service("reviewService")
 public class ReviewServiceImpl implements ReviewService {
+	
+	@Autowired
+	private ReviewDAO reviewDao;
 
 	@Override
 	public void addReview(Doc_ReviewDTO vo) {
