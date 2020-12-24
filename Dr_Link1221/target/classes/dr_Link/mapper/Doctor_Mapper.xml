@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="doctor_"> <!--  -->
+
+   	<resultMap type="departmentDTO" id="departmentMap">
+	<result column="dep_num" property="dep_num"/>
+	<result column="dep_name" property="dep_name"/>
+	</resultMap>
+	
+	<resultMap type="doctorDTO" id="doctorMap">
+		<result column="doctor_num" property="doctor_num" />
+		<result column="d_id" property="d_id" />
+		<result column="d_pwd" property="d_pwd" />
+		<result column="d_name" property="d_name" />
+		<result column="d_jumin_num" property="d_jumin_num" />
+		<result column="d_phone_num" property="d_phone_num" />
+		<result column="d_gender" property="d_gender" />
+		<result column="d_zipcode" property="d_zipcode" />
+		<result column="d_address1" property="d_address1" />
+		<result column="d_address2" property="d_address2" />
+		<result column="d_email" property="d_email" />
+		<result column="d_licence" property="d_licence" />
+		<result column="d_licence_num" property="d_licence_num" />
+		<result column="d_regdate" property="d_regdate" />
+		<result column="d_content" property="d_content" />
+		<result column="d_imgfile" property="d_imgfile" />
+		<result column="d_graduation" property="d_graduation" />
+		<result column="d_career" property="d_career" />
+		<result column="d_field" property="d_field" />
+		<collection property="departmentDTO" resultMap="departmentMap"/>
+	</resultMap>
+
+	<insert id="add" parameterType="doctorDTO">
+		insert into member_aop values(MEMBER_AOP_SEQ.nextval, #{id}, #{pwd},
+		#{name}, sysdate);
+	</insert>
+
+	<select id="idChk" parameterType="String" resultType="int">
+		select count(*) cnt from member_aop where id=#{id}
+	</select>
+
+	<!-- login -->
+	<select id="loginchk" parameterType="doctorDTO"
+		resultType="doctorDTO">
+		select id, name from member_aop where id=#{id} and pwd=#{pwd}
+	</select>
+
+	<select id="getDoctor" parameterType="doctorDTO"
+		resultType="doctorDTO">
+		select id, name from member_aop where id=#{did} and pwd=#{dpwd}
+	</select>
+
+	<!-- select count(*) cnt, id, name from member_aop where id=#{id} group 
+		by name -->
+
+
+
+	<!-- 의사프로필 -->
+	<select id="doctor_profile" resultType="doctorDTO" parameterType="int">
+		select * from dl_doctor where doctor_num=#{doctor_num}
+	</select>
+
+	<!-- 의료진소개 -->
+	<select id="getSearch" resultType="SearchDTO">
+		SELECT * FROM dl_doctor order
+		by d_name desc
+	</select>
+
+	<!-- 의료진소개 페이징처리 -->
+	<select id="list" resultType="SearchDTO" parameterType="PageDTO">
+		select * from (
+		select rownum r_num, d.* from
+		(
+		select * from dl_doctor order by dep_num desc
+		) d
+		) where r_num between #{start} and #{end}
+	</select>
+
+	<select id="totalCount" resultType="int">
+		select count(*) cnt from dl_doctor
+	</select>
+
+	<!-- 의료진소개 필터링 -->
+	<select id="list" resultType="SearchDTO" parameterType="PageDTO">
+		select * from (
+		select rownum r_num, d.* from
+		)
+		select * from dl_doctor order by dep_num asc
+		)d
+		)
+
+		<if test="searchType != null">
+			<where>
+				<choose>
+					<when test="searchType == 1">
+						dep_num = #{searchValue}
+					</when>
+					<when test="searchType == 2">
+						d_name like '%'|| #{searchValue} ||'%'
+					</when>
+				</choose>
+			</where>
+		</if>
+		order by num desc
+		) a
+		) where r_num between #{start} and #{end}
+	</select>
+
+
+</mapper>
