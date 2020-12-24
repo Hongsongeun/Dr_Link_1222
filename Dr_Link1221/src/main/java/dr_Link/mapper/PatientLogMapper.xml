@@ -13,7 +13,7 @@
 	increment by 1 start with 1; -->
 
 
-<mapper namespace="patient">
+<mapper namespace="patientLog">
 	
 	<update id="updatePatient" parameterType="patientDTO">
 		update dl_user set bloodtype=#{bloodtype}, p_phone_num=#{p_phone_num}, p_email=#{p_email}, p_zipcode=#{p_zipcode}, p_address1=#{p_address1}, p_address2=#{p_address2} where patient_num=#{patient_num} 
@@ -42,10 +42,8 @@
 
 
 	<!-- 로그인 -->
-	<select id="loginchk" parameterType="patientDTO"
-		resultType="patientDTO">
-		select patient_num, p_id, p_name from dl_user where
-		p_id=#{p_id} and p_pwd=#{p_pwd}
+	<select id="loginchk" parameterType="patientDTO" resultType="patientDTO">
+		select patient_num, p_id, p_name from dl_user where p_id=#{p_id} and p_pwd=#{p_pwd}
 	</select>
 
 

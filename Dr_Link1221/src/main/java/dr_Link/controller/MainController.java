@@ -34,7 +34,7 @@ public class MainController {
 	private MainDaoInter dao;
 
 	@Autowired
-	private PatientDaoInter PDaoInter;
+	private PatientDaoInter patientDAO;
 	
 	@Autowired
 	private DoctorDaoImp doctorDaoInter;
@@ -61,7 +61,7 @@ public class MainController {
 
 	@RequestMapping(value = "loginCheck")
 	public String loginCheck(PatientDTO dto, HttpSession session, Model model) {
-		PatientDTO result = PDaoInter.loginCheckPatient(dto);
+		PatientDTO result = patientDAO.loginCheckPatient(dto);
 		if (result == null) {
 			model.addAttribute("message", "<p style='color:red'> 아이디나 비밀번호가 일치하지 않습니다. </p>");
 			return "login.page";
@@ -165,7 +165,7 @@ public class MainController {
 //		PDaoInter.addTvo(dto);
 
 		System.out.println("===> dao로 가자!");
-		PDaoInter.insertPatient(dto);
+		patientDAO.insertPatient(dto);
 		System.out.println("===> Mybatis add() 실행 성공인가?");
 		return mav;
 

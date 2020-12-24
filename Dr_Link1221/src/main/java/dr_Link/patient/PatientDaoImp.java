@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import dr_Link.dto.PatientDTO;
 import dr_Link.dto.TreatmentRecordDTO;
 
-@Repository("PatientDaoInter")
+@Repository("patientDAO")
 public class PatientDaoImp implements PatientDaoInter{
 	
 	@Autowired
