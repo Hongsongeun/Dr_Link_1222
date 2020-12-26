@@ -2,6 +2,7 @@ package dr_Link.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import dr_Link.booking.BookingDTO;
+import dr_Link.booking.BookingService;
+import dr_Link.doctorProfile.DoctorDTO;
+import dr_Link.doctorProfile.DoctorDaoInter;
 import dr_Link.dto.DrLinkDTO;
 import dr_Link.dto.PatientDTO;
 import dr_Link.dto.PrescriptionDTO;
@@ -28,6 +33,12 @@ public class PatientController {
 	private PrescriptionDaoInter pre_dao;
 	@Autowired
 	private PatientDaoInter patient_dao;
+	
+	@Autowired
+	private BookingService bookingService;
+	
+	@Autowired
+	private DoctorDaoInter doctor_dao;
 	
 	@RequestMapping(value = "{step}")
 	public String accessAnyFiles(@PathVariable String step) {
@@ -84,10 +95,21 @@ public class PatientController {
 	/* patient_dashboard에서 진료기록, 결제기록, 예약기록 담당하시는 분들 여기서 값 세팅해주세요 */
 	@RequestMapping(value = "patient_dashboard")
 	public String treatmentRecord(Model model, HttpSession session) {
+		String patient_num = ((PatientDTO) session.getAttribute("user")).getPatient_num();
 		try {
-			PatientDTO result = (PatientDTO) session.getAttribute("user");
-			result = patient_dao.getPatientDTO(Integer.parseInt(result.getPatient_num()));
-			model.addAttribute("patient", result);
+			// 환자 프로필
+			PatientDTO patient_profile = patient_dao.getPatientDTO(Integer.parseInt(patient_num));
+			model.addAttribute("patient_profile", patient_profile);
+			
+			// 예약 정보
+			List<BookingDTO> bookingList = bookingService.getPatientBookingList(Integer.parseInt(patient_num));
+			model.addAttribute("bookingList", bookingList);
+			
+			// 처방전
+			
+			// 결제내역
+			
+			
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}

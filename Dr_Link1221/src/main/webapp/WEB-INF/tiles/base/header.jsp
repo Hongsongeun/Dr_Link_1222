@@ -66,7 +66,7 @@
 						</ul>
 				<c:if test="${sessionScope.user != null }">
 						<li class="has-submenu">
-							<a href="${path}/patients/patient_dashboard?patient_num=${sessionScope.user.patient_num}">마이페이지</a>
+							<a href="${path}/patients/patient_dashboard">마이페이지</a>
 						</li>
 								</ul>
 						</li>

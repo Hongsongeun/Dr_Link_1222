@@ -1,5 +1,8 @@
 package dr_Link.booking;
 
+import dr_Link.doctorProfile.DoctorDTO;
+import dr_Link.dto.DepartmentDTO;
+
 public class BookingDTO {
 	private String appointment_num      ;
 	private String patient_num          ;
@@ -8,7 +11,21 @@ public class BookingDTO {
 	private String appointment_date     ;
 	private String appointment_time     ;
 	private String reg_date             ;
-	
+	private DoctorDTO doctorDTO;
+	private DepartmentDTO departmentDTO;
+		
+	public DepartmentDTO getDepartmentDTO() {
+		return departmentDTO;
+	}
+	public void setDepartmentDTO(DepartmentDTO departmentDTO) {
+		this.departmentDTO = departmentDTO;
+	}
+	public DoctorDTO getDoctorDTO() {
+		return doctorDTO;
+	}
+	public void setDoctorDTO(DoctorDTO doctorDTO) {
+		this.doctorDTO = doctorDTO;
+	}
 	public String getAppointment_num() {
 		return appointment_num;
 	}

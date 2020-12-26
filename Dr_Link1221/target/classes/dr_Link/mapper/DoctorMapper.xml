@@ -87,6 +87,32 @@
 	</select>
 
   	<!-- search -->
+  	
+  	<select id="list_" resultType="doctorDTO" parameterType="PageDTO">
+  		SELECT * FROM(
+  			SELECT ROWNUM r_num, a.* FROM (
+  				SELECT * FROM DL_DOCTOR
+  		<if test="d_gender != null">
+  			<where>
+  				D_GENDER IN
+  				<foreach collection="d_gender" item="arr" open="(" close=")" separator=",">
+				 	#{arr}
+				</foreach>
+  			</where>
+  		</if>
+  		<if test="d_gender != null and dep_num != null">
+  			AND
+  		</if>
+  		<if test="dep_num != null">
+  			DEP_NUM IN
+			<foreach collection="dep_num" item="arr" open="(" close=")" separator=",">
+			 	#{arr}
+			</foreach>
+  		</if>
+  		ORDER BY DOCTOR_NUM
+  		) a
+  		) WHERE r_num BETWEEN #{start} and #{end}
+  	</select>
   	 <!-- 의료진소개 페이징처리 및 필터링 -->
 	  <select id="list" resultType="doctorDTO" parameterType="PageDTO">
 	   select * from (
@@ -110,6 +136,7 @@
 	   ) a
 	   ) where r_num between #{start} and #{end}
 	</select>
+	
 	<select id="totalCount" resultType="int" parameterType="PageDTO">
 	  		select count(*) cnt from dl_doctor
 	  		<if test="searchType != null">
@@ -125,38 +152,35 @@
 	   	</choose>
 	   </where>
 	   </if>
+	   order by D_NAME
 	 </select>
 	 
 	 
 	<!-- search 파라미터 값 있을 때 -->  
-	<select id="searchList" resultType="doctorDTO" parameterType="hashmap">
-	
-		select * from (
-		   select rownum r_num, a.* from 
-		   (
-		   select * from dl_doctor 
-	   
-			<where> 
-	
-			<if test="d_genderList.size !=0">
-			d_gender in
-			<foreach collection="d_genderList" item="item" 
-			index="index" separator="," open="(" close=")">
-			#{item}
-			</foreach>
-			</if>
-			
-			<if test="dep_numList.size !=0">
-			and dep_num in
-			<foreach collection="dep_numList" item="item"
-			index="index" separator="," open="(" close=")">
-			#{item}
-			</foreach>
-			</if>
-			</where>
-			order by doctor_num desc 
-			) a
-			   ) where r_num between 1 and 15 
+	<select id="searchList" resultType="doctorDTO">
+	   select * from dl_doctor 
+   
+		<where> 
+
+		<if test="d_genderList != null">
+		d_gender in
+		<foreach collection="d_genderList" item="item" 
+		index="index" separator="," open="(" close=")">
+		#{item}
+		</foreach>
+		</if>
+		<if test="d_genderList != null and dep_numList != null">
+		and
+		</if>
+		<if test="dep_numList != null">
+		dep_num in
+		<foreach collection="dep_numList" item="item"
+		index="index" separator="," open="(" close=")">
+		#{item}
+		</foreach>
+		</if>
+		</where>
+		order by D_NAME 
 	</select>
    
   

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html> 		
 			<!-- Breadcrumb -->
 			<div class="breadcrumb-bar">
@@ -31,13 +34,13 @@
 								<div class="widget-profile pro-widget-content">
 									<div class="profile-info-widget">
 										<a href="#" class="booking-doc-img">
-											<img src="${path}/resources/patient/profileImg/${patient.p_photo}">
+											<img src="${path}/resources/patient/profileImg/${patient_profile.p_photo}">
 										</a>
 										<div class="profile-det-info">
-											<h3>${patient.p_name }</h3>
+											<h3>${patient_profile.p_name }</h3>
 											<div class="patient-details">
-												<h5><i class="fas fa-birthday-cake"></i> ${patient.birth}</h5>
-												<h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> ${patient.profileAddress }</h5>
+												<h5><i class="fas fa-birthday-cake"></i> ${patient_profile.birth}</h5>
+												<h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> ${patient_profile.profileAddress }</h5>
 											</div>
 										</div>
 									</div>
@@ -126,20 +129,22 @@
 															</thead>
 															<tbody>
 																<!-- start for -->
+															<c:forEach var="bookingList" items="${bookingList }">
 																<tr class="text-center" >
 																	<td>
 																		<h2 class="table-avatar">
-																			<a href="doctor-profile" class="avatar avatar-sm mr-2">
-																				<img class="avatar-img rounded-circle" src="${pageContext.request.contextPath}/resources/img/doctors/doctor-thumb-10.jpg" alt="User Image">
+																			<a href="doctor-profile?doctor_num=${bookingList.doctorDTO.doctor_num }" class="avatar avatar-sm mr-2">
+																				<img class="avatar-img rounded-circle" src="${path}/resources/doctor/doctorImg/${bookingList.doctorDTO.d_imgfile}" alt="User Image">
 																			</a>
-																			<a href="doctor-profile">Dr. Olga Barlow  <span>Dental</span></a>
+																			<a href="doctor-profile?doctor_num=${bookingList.doctorDTO.doctor_num }">Dr. ${bookingList.doctorDTO.d_name }  <span>${bookingList.departmentDTO.dep_name }</span></a>
 																		</h2>
 																	</td>
-																	<td>5 Nov 2019 <span class="d-block text-info">5.00 PM</span></td>
-																	<td>1 Nov 2019</td>
-																	<td><span class="badge badge-pill bg-success-light">Confirm</span></td>
+																	<td>${bookingList.appointment_date } <span class="d-block text-info">${bookingList.appointment_time }</span></td>
+																	<td>${bookingList.reg_date }</td>
+																	<td><span class="badge badge-pill bg-success-light">정상</span></td>
 																</tr>
 																<!-- / end for -->
+															</c:forEach>
 															</tbody>
 														</table>
 													</div>

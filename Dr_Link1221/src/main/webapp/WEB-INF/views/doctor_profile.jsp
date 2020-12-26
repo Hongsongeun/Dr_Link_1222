@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+f<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html> 	
 			<!-- Page Content -->
 			<div class="content">
@@ -70,7 +71,7 @@
 										</a> 
 									</div>
 									<div class="clinic-booking">
-										<a class="apt-btn" href="booking?doctor_num=${doctor_profile.doctor_num }">예약하기</a>
+										<a class="apt-btn" href="/patient/booking?doctor_num=${doctor_profile.doctor_num }">예약하기</a>
 									</div>
 								</div>
 							</div>
@@ -231,9 +232,9 @@
 														<span class="comment-author">${review.patientDTO.p_name }</span>
 														<span class="comment-date">${review.review_date}</span>
 														<div class="review-count rating">
-															<c:forEach begin="1" end="5" step="1" varStatus="i">
+															<c:forEach var="i" begin="0" end="4" step="1">
 																<c:choose>
-																	<c:when test="${review.review_rating ge i}">
+																	<c:when test="${review_rating > i}">
 																		<i class="fas fa-star filled"></i>	
 																	</c:when>
 																	<c:otherwise>
@@ -244,7 +245,7 @@
 														</div>
 													</div>
 													<p class="comment-content">
-														${review.content}
+														${review.review_content}
 													</p>
 													<div class="comment-reply">
 														<p class="recommend-btn">
@@ -282,7 +283,6 @@
 										
 										<!-- Write Review Form -->
 									<form action="addReview.do" method="post">
-										<input type="hidden" name="patient_num" value="${sessionScope.user.patient_num}" />
 										<input type="hidden" name="doctor_num" value="${doctor_profile.doctor_num}" />
 											<div class="form-group">
 												<div class="star-rating">
@@ -314,7 +314,7 @@
 											</div> -->
 											<div class="form-group">
 												<label>후기</label>
-												<textarea id="review_desc" maxlength="100" class="form-control"></textarea>
+												<textarea id="review_desc" maxlength="100" class="form-control" name="review_content"></textarea>
 											  
 											  <div class="d-flex justify-content-between mt-3"><small class="text-muted"><span id="chars">100</span> characters remaining</small></div>
 											</div>
