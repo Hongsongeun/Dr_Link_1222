@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import dr_Link.doctorProfile.DoctorDTO;
+import dr_Link.dto.DrLinkDTO;
 import dr_Link.dto.MedicineDTO;
 import dr_Link.dto.PatientDTO;
 
@@ -64,6 +65,11 @@ public class PrescriptionDaoImp implements PrescriptionDaoInter {
 			medi_num.add((MedicineDTO)ss.selectOne("prescription.medicine_detail_info",medicine));
 		}
 		return medi_num;
+	}
+
+	@Override
+	public DrLinkDTO drLink_info(DrLinkDTO vo) {
+		return ss.selectOne("prescription.drLink_info",vo);
 	}
 
 }

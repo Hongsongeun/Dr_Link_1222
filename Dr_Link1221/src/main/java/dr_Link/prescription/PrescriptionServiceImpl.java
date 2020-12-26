@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import dr_Link.booking.BookingDAO;
 import dr_Link.doctorProfile.DoctorDTO;
+import dr_Link.dto.DrLinkDTO;
 import dr_Link.dto.MedicineDTO;
 import dr_Link.dto.PatientDTO;
 
@@ -50,6 +51,11 @@ public class PrescriptionServiceImpl implements PrescriptionService{
 	@Override
 	public List<MedicineDTO> medicine_detail_info(String[] medicine_num) {
 		return pre_dao.medicine_detail_info(medicine_num);
+	}
+
+	@Override
+	public DrLinkDTO drLink_info(DrLinkDTO vo) {
+		return pre_dao.drLink_info(vo);
 	}
 
 }
