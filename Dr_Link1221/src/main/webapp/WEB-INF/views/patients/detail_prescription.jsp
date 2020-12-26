@@ -10,17 +10,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 		
 		<!-- Favicons -->
-		<link href="${pageContext.request.contextPath}/resources/img/favicon.png" rel="icon">
+		<link href="${path}/resources/assets/img/favicon.png" rel="icon">
 		
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+		<link rel="stylesheet" href="${path}/resources/assets/css/bootstrap.min.css">
 		
 		<!-- Fontawesome CSS -->
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/fontawesome/css/fontawesome.min.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/fontawesome/css/all.min.css">
+		<link rel="stylesheet" href="${path}/resources/assets/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="${path}/resources/assets/plugins/fontawesome/css/all.min.css">
 		
 		<!-- Main CSS -->
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+		<link rel="stylesheet" href="${path}/resources/assets/css/style.css">
 		
 	<!-- 구글폰트 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
@@ -72,10 +72,10 @@ body {
 									<div class="pro-widget-content">
 										<div class="profile-info-widget">
 											<a href="#" class="booking-doc-img">
-												<img src="${pageContext.request.contextPath}/resources/img/patients/patient.jpg" alt="User Image">
+												<img src="${path}/resources/assets/img/patients/patient.jpg" alt="User Image">
 											</a>
 											<div class="profile-det-info">
-												<h3><a href="patient-profile">Richard Wilson</a></h3>
+												<h3><a href="patient-profile">${prescription.patientDTO.p_name}</a></h3>
 												<div class="patient-details">
 													<h5><b>Patient ID :</b> PT00${prescription.patient_num}</h5>
 												</div>
@@ -84,9 +84,9 @@ body {
 									</div>
 									<div class="patient-info">
 										<ul>
-											<li>Phone <span>+1 952 001 8563</span></li>
+											<li>Phone <span>${prescription.patientDTO.p_phone_num}</span></li>
 											<li>Age <span>38 Years, Male</span></li>
-											<li>Blood Group <span>AB+</span></li>
+											<li>Blood Group <span>${prescription.patientDTO.bloodtype}</span></li>
 										</ul>
 									</div>
 								</div>
@@ -108,7 +108,7 @@ body {
 										<div class="col-sm-6">
 											<div class="biller-info">
 												<h4 class="d-block">${prescription.patientDTO.p_name} 님</h4>
-												<span class="d-block text-sm text-muted">'진료과목' 진료</span>
+												<span class="d-block text-sm text-muted">${prescription.doctorDTO.departmentDTO.dep_name} 진료</span>
 											</div>
 										</div>
 										<div class="col-sm-6 text-sm-right">
@@ -132,16 +132,16 @@ body {
 															</thead>
 															<tbody>
 																<tr>
-																	<td>시간<span class="d-block text-info">시간</span></td>
-																	<td>제 <span> 15prescription_num </span> 호</td>
-																	<td>환자명</td>
+																	<td>${prescription.prescription_date}<span class="d-block text-info">${prescription.prescription_time}</span></td>
+																	<td>제 <span> 15${prescription.prescription_num}</span> 호</td>
+																	<td>${prescription.patientDTO.p_name}</td>
 																	<td class="text-left">
 																		<h2 class="table-avatar">
-																			<a href="doctor-profile">의사명</a>
+																			<a href="doctor-profile">${prescription.doctorDTO.d_name}</a>
 																		</h2>
 																	</td>
-																	<td>전문의</td>
-																	<td>3415-4</td>
+																	<td>${prescription.doctorDTO.d_licence}</td>
+																	<td>${prescription.doctorDTO.d_licence_num}</td>
 																</tr>
 															</tbody>
 														</table>
@@ -156,10 +156,10 @@ body {
 															</thead>
 															<tbody>
 																<tr>
-																	<td>${drLinkinfo.dl_name}</td>
-																	<td>${drLinkinfo.dl_tel}</td>
-																	<td>${drLinkinfo.dl_faxtel}</td>
-																	<td>김** 서명 사진 들어갈 예정</td>
+																	<td>Dr.Link</td>
+																	<td>02-2025-4119</td>
+																	<td>02-2025-4120</td>
+																	<td><Strong style="text-decoration:underline; color:#003669;">${prescription.doctorDTO.d_name}</Strong></td>
 																</tr>
 															</tbody>
 														</table>
@@ -183,9 +183,10 @@ body {
 												<tbody>
 												<c:set var="len" value="${fn:length(prescription.medicine_num)}"/> 
 												<c:forEach begin="0" end="${len-1}" varStatus="status">
+												
 													<tr>
 														<td>
-															<input class="form-control" value="${prescription.medicine_num[status.index]}" type="text" readonly="readonly">
+															<input class="form-control" value="${medi_detail[status.index].medicine_name}" type="text" readonly="readonly">
 														</td>
 														<td>
 															<input class="form-control" value="${prescription.dosage[status.index]}" type="text" readonly="readonly">
@@ -223,18 +224,18 @@ body {
 		<!-- /Main Wrapper -->
 	  
 		<!-- jQuery -->
-		<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+		<script src="${path}/resources/assets/js/jquery.min.js"></script>
 		
 		<!-- Bootstrap Core JS -->
-		<script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+		<script src="${path}/resources/assets/js/popper.min.js"></script>
+		<script src="${path}/resources/assets/js/bootstrap.min.js"></script>
 		
 		<!-- Sticky Sidebar JS -->
-        <script src="${pageContext.request.contextPath}/resources/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+        <script src="${path}/resources/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+        <script src="${path}/resources/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
 		
 		<!-- Custom JS -->
-		<script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
+		<script src="${path}/resources/assets/js/script.js"></script>
 		
 	</body>
 </html>

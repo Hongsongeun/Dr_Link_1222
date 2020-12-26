@@ -35,7 +35,7 @@
 							<div class="row ">
 								<div class="col-lg-4 mb-3">
 									<div class="card text-center doctor-book-card">
-										<img src="${pageContext.request.contextPath}/resources/img/hairRight1.jpg" alt="" class="img-fluid" >
+										<img src="${path}/resources/assets/img/hairRight1.jpg" alt="" class="img-fluid" >
 										<div class="doctor-book-card-content tile-card-content-1">
 											<div>
 												<h3 class="card-title mb-0">올바른 사진</h3>
@@ -45,7 +45,7 @@
 								</div>
 								<div class="col-lg-4 mb-3">
 									<div class="card text-center doctor-book-card">
-										<img src="${pageContext.request.contextPath}/resources/img/hairError1.jpg"  alt="" class="img-fluid" >
+										<img src="${path}/resources/assets/img/hairError1.jpg"  alt="" class="img-fluid" >
 										<div class="doctor-book-card-content tile-card-content-1">
 											<div>
 												<h3 class="card-title mb-0">틀린 사진</h3>
@@ -55,7 +55,7 @@
 								</div>
 								<div class="col-lg-4 mb-3">
 									<div class="card text-center doctor-book-card">
-										<img src="${pageContext.request.contextPath}/resources/img/hairError2.jpg" alt="" class="img-fluid" >
+										<img src="${path}/resources/assets/img/hairError2.jpg" alt="" class="img-fluid" >
 										<div class="doctor-book-card-content tile-card-content-1">
 											<div>
 											<h3 class="card-title mb-0">틀린 사진</h3>
@@ -96,7 +96,7 @@
 											<ul class="upload-wrap">
 												<li>
 													<div class=" upload-images">
-														<img alt="Blog Image" src="${pageContext.request.contextPath}/resources/admin/img/profiles/avatar-17.jpg">
+														<img alt="Blog Image" src="${path}/resources/assets/admin/img/profiles/avatar-17.jpg">
 													</div>
 												</li>
 											</ul>
@@ -129,9 +129,9 @@
 				 </p>
 			</div><!-- 증상설명 -->
 			<div class="col-lg-4 mb-3">
-				<div class="text-center" style="width:80% !important;" >
+				<div class="text-center" style="width:80% !important;margin-left: 50px;" >
 					<div class="card text-center doctor-book-card">
-						<img src="${pageContext.request.contextPath}/resources/img/hairEx01.jpg" alt="" class="img-fluid" >
+						<img src="${path}/resources/assets/img/hairEx01.jpg" alt="" class="img-fluid" >
 						<div class="doctor-book-card-content tile-card-content-1">
 							<div>
 								<h3 class="card-title mb-0">사진 예시</h3>
@@ -158,9 +158,9 @@
 					
 			</div><!-- 증상설명 -->
 			<div class="col-lg-4 mb-3">
-				<div class="text-center" style="width:80% !important;" >
+				<div class="text-center" style="width:80% !important;margin-left: 50px;" >
 					<div class="card text-center doctor-book-card">
-						<img src="${pageContext.request.contextPath}/resources/img/hairEx02.jpg" alt="" class="img-fluid" >
+						<img src="${path}/resources/assets/img/hairEx02.jpg" alt="" class="img-fluid" >
 						<div class="doctor-book-card-content tile-card-content-1">
 							<div>
 								<h3 class="card-title mb-0">사진 예시</h3>

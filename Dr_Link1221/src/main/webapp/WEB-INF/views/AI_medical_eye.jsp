@@ -118,7 +118,7 @@
 				 </p>
 			</div><!-- 증상설명 -->
 			<div class="col-lg-4 mb-3">
-				<div class="text-center" style="width:80% !important;" >
+				<div class="text-center" style="width:80% !important;margin-left: 50px;" >
 					<div class="card text-center doctor-book-card">
 						<img src="${path}/resources/assets/img/eyeExample1.jpg" alt="" class="img-fluid" >
 						<div class="doctor-book-card-content tile-card-content-1">
@@ -140,7 +140,7 @@
 				</p>
 			</div><!-- 증상설명 -->
 			<div class="col-lg-4 mb-3">
-				<div class="text-center" style="width:80% !important;" >
+				<div class="text-center" style="width:80% !important;margin-left: 50px;" >
 					<div class="card text-center doctor-book-card">
 						<img src="${path}/resources/assets/img/eyeExample2.jpg" alt="" class="img-fluid" >
 						<div class="doctor-book-card-content tile-card-content-1">
