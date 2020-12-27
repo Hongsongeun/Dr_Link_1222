@@ -12,7 +12,14 @@ public class Doc_ReviewDTO {
 	private String review_date;
 	private DoctorDTO doctorDTO;
 	private PatientDTO patientDTO;
+	private int ratingAvg;
 	
+	public int getRatingAvg() {
+		return ratingAvg;
+	}
+	public void setRatingAvg(int ratingAvg) {
+		this.ratingAvg = ratingAvg;
+	}
 	public String getReview_num() {
 		return review_num;
 	}

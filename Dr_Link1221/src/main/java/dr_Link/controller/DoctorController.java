@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import dr_Link.doctorProfile.DoctorDTO;
 import dr_Link.dto.DrLinkDTO;
 import dr_Link.prescription.PrescriptionDTO;
-import dr_Link.prescription.PrescriptionDaoInter;
+import dr_Link.prescription.PrescriptionService;
 
 @Controller
 @RequestMapping(value = "/doctor")
 public class DoctorController {
 
 	@Autowired	
-	private PrescriptionDaoInter pre_dao;
+	private PrescriptionService prescriptionService;
 	
 	@RequestMapping(value = "{step}")
 	public String accessAnyFiles(@PathVariable String step) {

@@ -64,12 +64,17 @@ function myFunction() {
 										<div class="booking-info">
 											<h4><a href="doctor-profile">${doctor_profile.d_name } 의사</a></h4>
 											<div class="rating">
-												<i class="fas fa-star filled"></i>
-												<i class="fas fa-star filled"></i>
-												<i class="fas fa-star filled"></i>
-												<i class="fas fa-star filled"></i>
-												<i class="fas fa-star"></i>
-												<span class="d-inline-block average-rating">35</span>
+											<c:forEach begin="0" end="4" step="1" varStatus="i">
+											   <c:choose>
+											      <c:when test="${reviewList[0].ratingAvg > i.index}">
+											         <i class="fas fa-star filled"></i>   
+											      </c:when>
+											      <c:otherwise>
+											         <i class="fas fa-star"></i>
+											      </c:otherwise>
+											   </c:choose>   
+											</c:forEach>
+												<span class="d-inline-block average-rating"> ( ${fn:length(reviewList) } )</span>
 											<!--  </div>
 											<p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i> Newyork, USA</p>
 										</div>-->
@@ -109,10 +114,8 @@ function myFunction() {
 												<ul>
 												<c:forEach var="week" items="${week}">
 													<li>
-														<a href="#">
 														<span>${week[1] }</span>
 														<span class="slot-date">${week[0]}</span>
-														</a>
 													</li>
 												</c:forEach>
 												</ul>
@@ -317,8 +320,8 @@ function myFunction() {
                                  </div>
 							</div>
 						<form action="bookingSave" method="post" class="bookingForm">
-							<input type="hidden" name="doctor_num(원본)" value="${doctor_profile.doctor_num }" />
-							<input type="hidden" name="dep_num(원본)" value="${doctor_profile.dep_num}" />						
+							<input type="hidden" name="doctor_num" value="${doctor_profile.doctor_num }" />
+							<input type="hidden" name="dep_num" value="${doctor_profile.dep_num}" />						
 							<input type="hidden" name="appointment_date" class="appointment_date" value="" />
 							<input type="hidden" name="appointment_time" class="appointment_time" value="" />
 						 <!-- Submit Section -->

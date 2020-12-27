@@ -38,7 +38,7 @@ public class PatientController {
 	private BookingService bookingService;
 	
 	@Autowired
-	private DoctorDaoInter doctor_dao;
+	private DoctorDaoInter doctorDao;
 	
 	@RequestMapping(value = "{step}")
 	public String accessAnyFiles(@PathVariable String step) {

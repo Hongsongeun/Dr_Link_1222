@@ -2,7 +2,6 @@ package dr_Link.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -30,19 +29,19 @@ import dr_Link.dto.PageDTO;
 import dr_Link.dto.PatientDTO;
 import dr_Link.main.MainDaoInter;
 import dr_Link.patient.PatientDaoInter;
-import dr_Link.patient.PatientServiceImpl;
+import dr_Link.patient.PatientServiceInter;
 
 @Controller
 public class MainController {
 	
 	@Autowired
 	private MainDaoInter dao;
+	
+	@Autowired
+	private PatientServiceInter patientService;
 
 	@Autowired
 	private PatientDaoInter patientDAO;
-
-	@Autowired
-	private PatientServiceImpl service;
 	
 	@Autowired
 	private DoctorDaoInter doctorDao;
@@ -87,7 +86,7 @@ public class MainController {
 	@RequestMapping(value = "find_id.do", method = RequestMethod.POST)
 	public String find_id(HttpServletResponse response, @RequestParam("email") String email, Model md)
 			throws Exception {
-		md.addAttribute("id", service.find_id(response, email));
+		md.addAttribute("id", patientService.find_id(response, email));
 		return "find-id";
 	}
 
@@ -95,7 +94,7 @@ public class MainController {
 	@RequestMapping(value = "check_id.do", method = RequestMethod.POST)
 	public void check_id(@RequestParam("p_id") String p_id, HttpServletResponse response) throws Exception {
 		System.out.println("===> Mybatis 아이디 중복 검사(AJAX) 실행 성공인가?");
-		service.check_id(p_id, response);
+		patientService.check_id(p_id, response);
 	}
 
 	// id 중복 체크 컨트롤러 필요없을 듯 하다
@@ -110,7 +109,7 @@ public class MainController {
 	@RequestMapping(value = "find_pw.do", method = RequestMethod.POST)
 	public void find_pw(@ModelAttribute PatientDTO dto, HttpServletResponse response) throws Exception {
 		System.out.println("===> Mybatis 비밀번호 찾기 실행 성공인가?");
-		service.find_pw(response, dto);
+		patientService.find_pw(response, dto);
 	}
 
 //	@RequestMapping(value = "userInsert")
@@ -216,7 +215,7 @@ public class MainController {
 	
 	
 	// search페이지 부분
-	@RequestMapping(value="/search")
+	@RequestMapping(value="/search") 
 	public String listSearch(PageDTO svo, Model model, HttpServletRequest request){
 		System.out.println("search 요청");
 		List<String> d_genderList=null;
