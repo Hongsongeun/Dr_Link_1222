@@ -2,6 +2,8 @@ package dr_Link.dto;
 
 import java.util.List;
 
+import dr_Link.doctorProfile.DoctorDTO;
+
 public class NewsReplDTO {
 
 	private int news_board_num, news_reply_num, patient_num, doctor_num;

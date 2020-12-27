@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import dr_Link.dto.DoctorDTO;
+import dr_Link.doctorProfile.DoctorDTO;
 import dr_Link.dto.DrLinkDTO;
-import dr_Link.dto.PrescriptionDTO;
-import dr_Link.patient.PrescriptionDaoInter;
+import dr_Link.prescription.PrescriptionDTO;
+import dr_Link.prescription.PrescriptionDaoInter;
 
 @Controller
 @RequestMapping(value = "/doctor")

@@ -15,13 +15,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import dr_Link.booking.BookingDTO;
 import dr_Link.booking.BookingService;
-import dr_Link.doctorProfile.DoctorDTO;
 import dr_Link.doctorProfile.DoctorDaoInter;
 import dr_Link.dto.DrLinkDTO;
 import dr_Link.dto.PatientDTO;
-import dr_Link.dto.PrescriptionDTO;
 import dr_Link.patient.PatientDaoInter;
-import dr_Link.patient.PrescriptionDaoInter;
+import dr_Link.prescription.PrescriptionDTO;
+import dr_Link.prescription.PrescriptionService;
 
 
 
@@ -30,7 +29,7 @@ import dr_Link.patient.PrescriptionDaoInter;
 public class PatientController {
 
 	@Autowired	
-	private PrescriptionDaoInter pre_dao;
+	private PrescriptionService prescriptionService;
 	@Autowired
 	private PatientDaoInter patient_dao;
 	
@@ -119,8 +118,8 @@ public class PatientController {
 	/* 김다유 : 처방기록 상세 페이지로 이동 */
 	@RequestMapping(value = "/detail_prescription") 
 	public String end_prescription(PrescriptionDTO vo,Model model, DrLinkDTO drLinkVo) {
-		PrescriptionDTO prescription = pre_dao.detail_prescription(vo);
-		DrLinkDTO drLinkinfo = pre_dao.prescription_info(drLinkVo);
+		PrescriptionDTO prescription = prescriptionService.detail_prescription(vo);
+		DrLinkDTO drLinkinfo = prescriptionService.prescription_info(drLinkVo);
 		
 		System.out.println("★getPatient_num : "+ prescription.getPatient_num());
 		System.out.println("★getDoctor_num : "+ prescription.getDoctor_num());

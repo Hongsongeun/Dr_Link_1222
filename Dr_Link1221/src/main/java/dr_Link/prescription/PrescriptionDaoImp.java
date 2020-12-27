@@ -12,7 +12,7 @@ import dr_Link.dto.DrLinkDTO;
 import dr_Link.dto.MedicineDTO;
 import dr_Link.dto.PatientDTO;
 
-@Repository("PrescriptionDaoInter")
+@Repository("prescriptionDao")
 public class PrescriptionDaoImp implements PrescriptionDaoInter {
 	
 	@Autowired

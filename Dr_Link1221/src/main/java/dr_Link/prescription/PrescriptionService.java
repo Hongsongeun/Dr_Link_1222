@@ -17,5 +17,6 @@ public interface PrescriptionService {
 	public List<MedicineDTO> medicine_info (MedicineDTO vo) ;
 	public List<MedicineDTO> medicine_detail_info (String [] medicine_num) ;
 	public DrLinkDTO drLink_info(DrLinkDTO vo);
+	DrLinkDTO prescription_info(DrLinkDTO drLinkVo);
 
 }
