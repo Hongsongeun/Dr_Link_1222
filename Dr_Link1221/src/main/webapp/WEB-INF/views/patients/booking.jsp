@@ -59,7 +59,7 @@ function myFunction() {
 								<div class="card-body">
 									<div class="booking-doc-info">
 										<a href="doctor-profile" class="booking-doc-img">
-											<img src="${path}/resources/doctor/doctorImg/${doctor_profile.d_imgfile}" alt="User Image">
+											<img src="${path}/resources/doctor/doctorImg/${doctor_profile.d_photo}" alt="User Image">
 										</a>
 										<div class="booking-info">
 											<h4><a href="doctor-profile">${doctor_profile.d_name } 의사</a></h4>

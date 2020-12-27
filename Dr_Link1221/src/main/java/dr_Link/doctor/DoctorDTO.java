@@ -1,4 +1,4 @@
-package dr_Link.doctorProfile;
+package dr_Link.doctor;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -35,11 +35,29 @@ public class DoctorDTO {
 	private String d_id, d_pwd, d_name, d_jumin_num, d_phone_num, d_zipcode, d_address1, d_address2, d_email;
 	private String d_licence, d_licence_num, d_regdate, d_gender,d_content, d_photo;
 	private String d_graduation,d_career,d_field;
+	private String[] d_graduations,d_careers,d_fields, d_licences;
 	private MultipartFile file;
 	private DepartmentDTO departmentDTO;
 	private Doc_ReviewDTO doc_ReviewDTO;
-	private String[] d_fields;
-		
+	
+	public String[] getD_licences() {
+		return d_licences;
+	}
+	public void setD_licences(String[] d_licences) {
+		this.d_licences = d_licences;
+	}
+	public String[] getD_graduations() {
+		return d_graduations;
+	}
+	public void setD_graduations(String[] d_graduations) {
+		this.d_graduations = d_graduations;
+	}
+	public String[] getD_careers() {
+		return d_careers;
+	}
+	public void setD_careers(String[] d_careers) {
+		this.d_careers = d_careers;
+	}
 	public Doc_ReviewDTO getDoc_ReviewDTO() {
 		return doc_ReviewDTO;
 	}
@@ -120,18 +138,18 @@ public class DoctorDTO {
 		return d_jumin_num;
 	}
 	public void setD_jumin_num(String d_jumin_num) {
-		StringBuffer str = new StringBuffer(d_jumin_num);
-		str = str.insert(7, "-");
-		d_jumin_num = str.toString();
+//		StringBuffer str = new StringBuffer(d_jumin_num);
+//		str = str.insert(7, "-");
+//		d_jumin_num = str.toString();
 		this.d_jumin_num = d_jumin_num;
 	}
 	public String getD_phone_num() {
 		return d_phone_num;
 	}
 	public void setD_phone_num(String d_phone_num) {
-		StringBuffer str = new StringBuffer(d_phone_num);
-		str = str.insert(3, "-");
-		str = str.insert(8, "-");
+//		StringBuffer str = new StringBuffer(d_phone_num);
+//		str = str.insert(3, "-");
+//		str = str.insert(8, "-");
 		this.d_phone_num = d_phone_num;
 	}
 	
@@ -142,20 +160,50 @@ public class DoctorDTO {
 		this.d_email = d_email;
 	}
 	public String getD_graduation() {
-		return d_graduation;
+		String graduation="";
+		int i=0;
+		for(String str : this.d_graduations) {
+			if(i==0) {
+				graduation=str;
+			}else {
+				graduation=graduation+","+str;
+			}
+			i++;	
+		}
+		return graduation;
 	}
 	public void setD_graduation(String d_graduation) {
 		//System.out.println("else문 안의 d_graduation : " + d_graduation);
 		this.d_graduation = d_graduation;
 	}
 	public String getD_career() {
-		return d_career;
+		String career="";
+		int i=0;
+		for(String str : this.d_careers) {
+			if(i==0) {
+				career=str;
+			}else {
+				career=career+","+str;
+			}
+			i++;	
+		}
+		return career;
 	}
 	public void setD_career(String d_career) {
 		this.d_career = d_career;
 	}
 	public String getD_licence() {
-		return d_licence;
+		String licence="";
+		int i=0;
+		for(String str : this.d_careers) {
+			if(i==0) {
+				licence=str;
+			}else {
+				licence=licence+","+str;
+			}
+			i++;	
+		}
+		return licence;
 	}
 	public void setD_licence(String d_licence) {
 		this.d_licence = d_licence;
@@ -205,7 +253,17 @@ public class DoctorDTO {
 		this.d_content = d_content;
 	}
 	public String getD_field() {
-		return d_field;
+		String field="";
+		int i=0;
+		for(String str : this.d_fields) {
+			if(i==0) {
+				field=str;
+			}else {
+				field=field+","+str;
+			}
+			i++;	
+		}
+		return field;
 	}
 	public void setD_field(String d_field) {
 		this.d_field = d_field;

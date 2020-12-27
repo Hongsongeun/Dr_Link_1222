@@ -130,11 +130,11 @@
 										<div class="doc-info-left">
 											<div class="doctor-img">
 												<a href="doctor-profile">
-													<img src="${path}/resources/doctor/doctorImg/${list.d_imgfile}" class="img-fluid" alt="User Image">
+													<img src="${path}/resources/doctor/doctorImg/${list.d_photo}" class="img-fluid" alt="User Image">
 												</a>
 											</div>
 											<div class="doc-info-cont">
-												<h4 class="doc-name"><a href="doctor-profile">${list.d_name }</a></h4>
+												<h4 class="doc-name"><a href="doctor-profile?doctor_num=${list.doctor_num }">${list.d_name }</a></h4>
 												<p class="doc-speciality" style="padding-right: 15px;">${list.departmentDTO.dep_name }<br></p>
 												<h5 class="doc-department"><img src="resources/img/specialities/specialities-05.png" class="img-fluid" alt="Speciality">${list.d_licence }</h5>
 												<div class="rating">

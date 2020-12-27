@@ -134,7 +134,7 @@
 																	<td>
 																		<h2 class="table-avatar">
 																			<a href="doctor-profile?doctor_num=${bookingList.doctorDTO.doctor_num }" class="avatar avatar-sm mr-2">
-																				<img class="avatar-img rounded-circle" src="${path}/resources/doctor/doctorImg/${bookingList.doctorDTO.d_imgfile}" alt="User Image">
+																				<img class="avatar-img rounded-circle" src="${path}/resources/doctor/doctorImg/${bookingList.doctorDTO.d_photo}" alt="User Image">
 																			</a>
 																			<a href="doctor-profile?doctor_num=${bookingList.doctorDTO.doctor_num }">Dr. ${bookingList.doctorDTO.d_name }  <span>${bookingList.departmentDTO.dep_name }</span></a>
 																		</h2>

@@ -14,7 +14,7 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 							<div class="doctor-widget">
 								<div class="doc-info-left">
 									<div class="doctor-img">
-										<img src="${path}/resources/doctor/doctorImg/${doctor_profile.d_imgfile}" class="img-fluid" alt="User Image">
+										<img src="${path}/resources/doctor/doctorImg/${doctor_profile.d_photo}" class="img-fluid" alt="User Image">
 										
 										<!-- <div class="doctor-action">
 											<a href="javascript:void(0)" class="btn btn-white fav-btn" >
@@ -77,7 +77,7 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 										</a> 
 									</div>
 									<div class="clinic-booking">
-										<a class="apt-btn" href="/patients/booking?doctor_num=${doctor_profile.doctor_num }">예약하기</a>
+										<a class="apt-btn" href="${path }/patients/booking?doctor_num=${doctor_profile.doctor_num }">예약하기</a>
 									</div>
 								</div>
 							</div>
@@ -369,7 +369,7 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 							<div class="call-wrapper">
 								<div class="call-inner">
 									<div class="call-user">
-										<img alt="User Image" src="${path}/resources/doctor/doctorImg/${doctor_profile.d_imgfile}" class="call-avatar">
+										<img alt="User Image" src="${path}/resources/doctor/doctorImg/${doctor_profile.d_photo}" class="call-avatar">
 										<h4>Dr. Darren Elder</h4>
 										<span>Connecting...</span>
 									</div>							
@@ -399,7 +399,7 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 							<div class="call-wrapper">
 								<div class="call-inner">
 									<div class="call-user">
-										<img class="call-avatar" src="${path}/resources/doctor/doctorImg/${doctor_profile.d_imgfile}" alt="User Image">
+										<img class="call-avatar" src="${path}/resources/doctor/doctorImg/${doctor_profile.d_photo}" alt="User Image">
 										<h4>Dr. Darren Elder</h4>
 										<span>Calling ...</span>
 									</div>							
