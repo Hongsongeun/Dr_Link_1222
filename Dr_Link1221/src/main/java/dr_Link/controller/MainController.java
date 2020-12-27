@@ -2,6 +2,7 @@ package dr_Link.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -122,11 +123,14 @@ public class MainController {
 
 	@RequestMapping(value = "userInsert", method = RequestMethod.POST)
 	public ModelAndView userInsert(PatientDTO dto, HttpServletRequest request, HttpSession session) {
+//		String root_path = request.getSession().getServletContext().getRealPath("/");  
+//		String attach_path = "resources/patient/profileImg/";
+		
 		ModelAndView mav = new ModelAndView("redirect:login");
 
 		String r_path = session.getServletContext().getRealPath("/");
 		System.out.println("r_path :" + r_path);
-		String img_path = "C:\\Users\\koko\\git\\Dr_Link_1222\\Dr_Link1221\\src\\main\\webapp\\resources\\patient\\profileImg\\";
+		String img_path = request.getSession().getServletContext().getRealPath("resources/patient/profileImg")+"/";
 		System.out.println("img_path :" + img_path);
 		StringBuffer path = new StringBuffer();
 		path.append(r_path).append(img_path);
@@ -248,20 +252,8 @@ public class MainController {
 		List<DoctorDTO> list = doctorDao.getList(map);
 		
 
-		// 진료분야 출력
-//		List<String[]> m = new ArrayList<String[]>();
-//		String [] d_field = null;
-//		for (int i = 0; i<list.size();i++) {
-//			for(int j = 0; j<list.get(i).getD_field().length;j++) {
-//				if(list.get(i).getD_field()!=null) {
-//				 d_field = list.get(i).getD_field();
-//				 m.add(d_field);
-//				 }   
-//			} 	
-//		}
-		
-		
-//		model.addAttribute("m",m);
+
+		  
 		model.addAttribute("d_genderList", d_genderList);
 		model.addAttribute("dep_numList", dep_numList);
 		model.addAttribute("paging", svo);

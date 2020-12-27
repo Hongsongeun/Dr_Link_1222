@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import dr_Link.booking.BookingService;
 import dr_Link.doctorProfile.DoctorDaoInter;
 import dr_Link.dto.DrLinkDTO;
 import dr_Link.dto.PatientDTO;
-import dr_Link.patient.PatientDaoInter;
+import dr_Link.patient.PatientServiceInter;
 import dr_Link.prescription.PrescriptionDTO;
 import dr_Link.prescription.PrescriptionService;
 
@@ -31,7 +32,7 @@ public class PatientController {
 	@Autowired	
 	private PrescriptionService prescriptionService;
 	@Autowired
-	private PatientDaoInter patient_dao;
+	private PatientServiceInter patientService;
 	
 	@Autowired
 	private BookingService bookingService;
@@ -46,14 +47,14 @@ public class PatientController {
 	}
 	
 	@RequestMapping("updatePatient")
-	public String updatePatient(PatientDTO vo, HttpSession session) {
+	public String updatePatient(PatientDTO vo, HttpSession session, HttpServletRequest request) {
 		
 		try {
-			String r_path = session.getServletContext().getRealPath("/");
-			System.out.println("r_path :" + r_path);
-			String img_path = "C:\\Users\\koko\\git\\Dr_Link_1222\\Dr_Link1221\\src\\main\\webapp\\resources\\patient\\profileImg\\";
+//			String r_path = session.getServletContext().getRealPath("/");
+//			System.out.println("r_path :" + r_path);
+			String img_path = request.getSession().getServletContext().getRealPath("resources/patient/profileImg")+"/";
 			System.out.println("img_path :" + img_path);
-			StringBuffer path = new StringBuffer();
+//			StringBuffer path = new StringBuffer();
 			/*
 			path.append(r_path).append(img_path);
 			path.append(oriFn);
@@ -71,6 +72,8 @@ public class PatientController {
 			PatientDTO p_num = (PatientDTO) session.getAttribute("user");
 			vo.setPatient_num(p_num.getPatient_num());
 			
+			patientService.updatePatient(vo);
+			
 			} catch (NullPointerException e) {
 				e.printStackTrace();
 			} catch (IllegalStateException e) {
@@ -85,7 +88,7 @@ public class PatientController {
 	@RequestMapping("profile-settings")
 	public String profile_setting(HttpSession session, Model model) {
 		PatientDTO result = (PatientDTO) session.getAttribute("user");
-		result = patient_dao.getPatientDTO(Integer.parseInt(result.getPatient_num()));
+		result = patientService.getPatientDTO(Integer.parseInt(result.getPatient_num()));
 		model.addAttribute("patient", result);
 		return "/patients/profile-settings.page";
 	}
@@ -97,7 +100,7 @@ public class PatientController {
 		String patient_num = ((PatientDTO) session.getAttribute("user")).getPatient_num();
 		try {
 			// 환자 프로필
-			PatientDTO patient_profile = patient_dao.getPatientDTO(Integer.parseInt(patient_num));
+			PatientDTO patient_profile = patientService.getPatientDTO(Integer.parseInt(patient_num));
 			model.addAttribute("patient_profile", patient_profile);
 			
 			// 예약 정보

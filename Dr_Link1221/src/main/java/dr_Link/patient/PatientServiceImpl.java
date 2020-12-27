@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import dr_Link.dto.PatientDTO;
 
-@Service("patientServiceInter")
+@Service("patientService")
 public class PatientServiceImpl implements PatientServiceInter{
 	
 	/* 김성민 */

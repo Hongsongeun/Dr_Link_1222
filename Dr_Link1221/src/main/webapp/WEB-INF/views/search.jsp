@@ -157,14 +157,14 @@
 												</div>
 												<div class="clinic-services">
 												 <c:choose>
-					                                <c:when test="${empty m[0]}">
+					                                <c:when test="${empty list.d_fields}">
 					                                    아직 정보가 입력되지 않았습니다.
 					                                </c:when> 
 					                                
 					                              <c:otherwise>
 					                              <c:set var="len" value="${fn:length(m[listStatus.index])}"/>
-					                              <c:forEach begin="0" end="${len-1}" varStatus="mmList">
-					                                 <span>${m[listStatus.index][mmList.index]}</span>
+					                              <c:forEach var="d_field" items="${list.d_fields }" >
+					                                 <span>${d_field}</span>
 					                              </c:forEach>
 					                              </c:otherwise>
 					                              
