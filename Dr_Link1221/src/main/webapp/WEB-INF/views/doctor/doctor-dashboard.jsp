@@ -9,22 +9,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 		
 		<!-- Favicons -->
-		<link href="${pageContext.request.contextPath}/resources/img/favicon.png" rel="icon">
+		<link href="${path}/resources/assets/img/favicon.png" rel="icon">
 		
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+		<link rel="stylesheet" href="${path}/resources/assets/css/bootstrap.min.css">
 		
 		<!-- Fontawesome CSS -->
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/fontawesome/css/fontawesome.min.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/fontawesome/css/all.min.css">
+		<link rel="stylesheet" href="${path}/resources/assets/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="${path}/resources/assets/plugins/fontawesome/css/all.min.css">
 		
 		<!-- Main CSS -->
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+		<link rel="stylesheet" href="${path}/resources/assets/css/style.css">
 		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
-			<script src="${pageContext.request.contextPath}/resources/js/html5shiv.min.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/js/respond.min.js"></script>
+			<script src="${path}/resources/assets/js/html5shiv.min.js"></script>
+			<script src="${path}/resources/assets/js/respond.min.js"></script>
 		<![endif]-->
 	
 	</head>
@@ -45,13 +45,13 @@
 							</span>
 						</a>
 						<a href="index" class="navbar-brand logo">
-							<img src="${pageContext.request.contextPath}/resources/img/logo.png" class="img-fluid" alt="Logo">
+							<img src="${path}/resources/assets/img/logo.png" class="img-fluid" alt="Logo">
 						</a>
 					</div>
 					<div class="main-menu-wrapper">
 						<div class="menu-header">
 							<a href="index" class="menu-logo">
-								<img src="${pageContext.request.contextPath}/resources/img/logo.png" class="img-fluid" alt="Logo">
+								<img src="${path}/resources/assets/img/logo.png" class="img-fluid" alt="Logo">
 							</a>
 							<a id="menu_close" class="menu-close" href="javascript:void(0);">
 								<i class="fas fa-times"></i>
@@ -175,13 +175,13 @@
 						<li class="nav-item dropdown has-arrow logged-item">
 							<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
 								<span class="user-img">
-									<img class="rounded-circle" src="${pageContext.request.contextPath}/resources/img/doctors/doctor-thumb-02.jpg" width="31" alt="Darren Elder">
+									<img class="rounded-circle" src="${path}/resources/assets/img/doctors/doctor-thumb-02.jpg" width="31" alt="Darren Elder">
 								</span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right">
 								<div class="user-header">
 									<div class="avatar avatar-sm">
-										<img src="${pageContext.request.contextPath}/resources/img/doctors/doctor-thumb-02.jpg" alt="User Image" class="avatar-img rounded-circle">
+										<img src="${path}/resources/assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" class="avatar-img rounded-circle">
 									</div>
 									<div class="user-text">
 										<h6>Darren Elder</h6>
@@ -230,7 +230,7 @@
 								<div class="widget-profile pro-widget-content">
 									<div class="profile-info-widget">
 										<a href="#" class="booking-doc-img">
-											<img src="${pageContext.request.contextPath}/resources/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+											<img src="${path}/resources/assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
 										</a>
 										<div class="profile-det-info">
 											<h3>김성민 의사</h3>
@@ -263,12 +263,6 @@
 												</a>
 											</li>
 											<li>
-												<a href="schedule-timings">
-													<i class="fas fa-hourglass-start"></i>
-													<span>근무시간</span>
-												</a>
-											</li>
-											<li>
 												<a href="invoices">
 													<i class="fas fa-file-invoice"></i>
 													<span>Invoices</span>
@@ -288,7 +282,7 @@
 												</a>
 											</li>
 											<li>
-												<a href="doctor-profile-settings">
+												<a href="doctor_profile_settings">
 													<i class="fas fa-user-cog"></i>
 													<span>프로필 수정</span>
 												</a>
@@ -318,7 +312,7 @@
 													<div class="dash-widget dct-border-rht">
 														<div class="circle-bar circle-bar1">
 															<div class="circle-graph1" data-percent="75">
-																<img src="${pageContext.request.contextPath}/resources/img/icon-01.png" class="img-fluid" alt="patient">
+																<img src="${path}/resources/assets/img/icon-01.png" class="img-fluid" alt="patient">
 															</div>
 														</div>
 														<div class="dash-widget-info">
@@ -333,7 +327,7 @@
 													<div class="dash-widget dct-border-rht">
 														<div class="circle-bar circle-bar2">
 															<div class="circle-graph2" data-percent="65">
-																<img src="${pageContext.request.contextPath}/resources/img/icon-02.png" class="img-fluid" alt="Patient">
+																<img src="${path}/resources/assets/img/icon-02.png" class="img-fluid" alt="Patient">
 															</div>
 														</div>
 														<div class="dash-widget-info">
@@ -348,7 +342,7 @@
 													<div class="dash-widget">
 														<div class="circle-bar circle-bar3">
 															<div class="circle-graph3" data-percent="50">
-																<img src="${pageContext.request.contextPath}/resources/img/icon-03.png" class="img-fluid" alt="Patient">
+																<img src="${path}/resources/assets/img/icon-03.png" class="img-fluid" alt="Patient">
 															</div>
 														</div>
 														<div class="dash-widget-info">
@@ -402,7 +396,7 @@
 																	<tr>
 																		<td>
 																			<h2 class="table-avatar">
-																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${pageContext.request.contextPath}/resources/img/patients/patient.jpg" alt="User Image"></a>
+																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${path}/resources/assets/img/patients/patient.jpg" alt="User Image"></a>
 																				<a href="patient-profile.jsp">고현영 <span>#12345</span></a>
 																			</h2>
 																		</td>
@@ -428,7 +422,7 @@
 																	<tr>
 																		<td>
 																			<h2 class="table-avatar">
-																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${pageContext.request.contextPath}/resources/img/patients/patient1.jpg" alt="User Image"></a>
+																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${path}/resources/assets/img/patients/patient1.jpg" alt="User Image"></a>
 																				<a href="patient-profile">신주섭 <span>#12345</span></a>
 																			</h2>
 																		</td>
@@ -454,7 +448,7 @@
 																	<tr>
 																		<td>
 																			<h2 class="table-avatar">
-																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${pageContext.request.contextPath}/resources/img/patients/patient2.jpg" alt="User Image"></a>
+																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${path}/resources/assets/img/patients/patient2.jpg" alt="User Image"></a>
 																				<a href="patient-profile">Travis Trimble  <span>#PT0002</span></a>
 																			</h2>
 																		</td>
@@ -480,7 +474,7 @@
 																	<tr>
 																		<td>
 																			<h2 class="table-avatar">
-																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${pageContext.request.contextPath}/resources/img/patients/patient3.jpg" alt="User Image"></a>
+																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${path}/resources/assets/img/patients/patient3.jpg" alt="User Image"></a>
 																				<a href="patient-profile">Carl Kelly <span>#PT0003</span></a>
 																			</h2>
 																		</td>
@@ -506,7 +500,7 @@
 																	<tr>
 																		<td>
 																			<h2 class="table-avatar">
-																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${pageContext.request.contextPath}/resources/img/patients/patient4.jpg" alt="User Image"></a>
+																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${path}/resources/assets/img/patients/patient4.jpg" alt="User Image"></a>
 																				<a href="patient-profile">Michelle Fairfax <span>#PT0004</span></a>
 																			</h2>
 																		</td>
@@ -532,7 +526,7 @@
 																	<tr>
 																		<td>
 																			<h2 class="table-avatar">
-																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${pageContext.request.contextPath}/resources/img/patients/patient5.jpg" alt="User Image"></a>
+																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${path}/resources/assets/img/patients/patient5.jpg" alt="User Image"></a>
 																				<a href="patient-profile">Gina Moore <span>#PT0005</span></a>
 																			</h2>
 																		</td>
@@ -583,7 +577,7 @@
 																	<tr>
 																		<td>
 																			<h2 class="table-avatar">
-																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${pageContext.request.contextPath}/resources/img/patients/patient6.jpg" alt="User Image"></a>
+																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${path}/resources/assets/img/patients/patient6.jpg" alt="User Image"></a>
 																				<a href="patient-profile">홍송은 <span>#33333</span></a>
 																			</h2>
 																		</td>
@@ -609,7 +603,7 @@
 																	<tr>
 																		<td>
 																			<h2 class="table-avatar">
-																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${pageContext.request.contextPath}/resources/img/patients/patient7.jpg" alt="User Image"></a>
+																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${path}/resources/assets/img/patients/patient7.jpg" alt="User Image"></a>
 																				<a href="patient-profile">Joan Gardner <span>#PT0006</span></a>
 																			</h2>
 																		</td>
@@ -635,7 +629,7 @@
 																	<tr>
 																		<td>
 																			<h2 class="table-avatar">
-																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${pageContext.request.contextPath}/resources/img/patients/patient8.jpg" alt="User Image"></a>
+																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${path}/resources/assets/img/patients/patient8.jpg" alt="User Image"></a>
 																				<a href="patient-profile">Daniel Griffing <span>#PT0007</span></a>
 																			</h2>
 																		</td>
@@ -661,7 +655,7 @@
 																	<tr>
 																		<td>
 																			<h2 class="table-avatar">
-																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${pageContext.request.contextPath}/resources/img/patients/patient9.jpg" alt="User Image"></a>
+																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${path}/resources/assets/img/patients/patient9.jpg" alt="User Image"></a>
 																				<a href="patient-profile">Walter Roberson <span>#PT0008</span></a>
 																			</h2>
 																		</td>
@@ -687,7 +681,7 @@
 																	<tr>
 																		<td>
 																			<h2 class="table-avatar">
-																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${pageContext.request.contextPath}/resources/img/patients/patient10.jpg" alt="User Image"></a>
+																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${path}/resources/assets/img/patients/patient10.jpg" alt="User Image"></a>
 																				<a href="patient-profile">Robert Rhodes <span>#PT0010</span></a>
 																			</h2>
 																		</td>
@@ -713,7 +707,7 @@
 																	<tr>
 																		<td>
 																			<h2 class="table-avatar">
-																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${pageContext.request.contextPath}/resources/img/patients/patient11.jpg" alt="User Image"></a>
+																				<a href="patient-profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="${path}/resources/assets/img/patients/patient11.jpg" alt="User Image"></a>
 																				<a href="patient-profile">Harry Williams <span>#PT0011</span></a>
 																			</h2>
 																		</td>
@@ -769,7 +763,7 @@
 								<!-- Footer Widget -->
 								<div class="footer-widget footer-about">
 									<div class="footer-logo">
-										<img src="${pageContext.request.contextPath}/resources/img/footer-logo.png" alt="logo">
+										<img src="${path}/resources/assets/img/footer-logo.png" alt="logo">
 									</div>
 									<div class="footer-about-content">
 										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
@@ -944,21 +938,21 @@
 		</div>
 		<!-- /Appointment Details Modal -->
 		<!-- jQuery -->
-		<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+		<script src="${path}/resources/assets/js/jquery.min.js"></script>
 		
 		<!-- Bootstrap Core JS -->
-		<script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+		<script src="${path}/resources/assets/js/popper.min.js"></script>
+		<script src="${path}/resources/assets/js/bootstrap.min.js"></script>
 		
 		<!-- Sticky Sidebar JS -->
-        <script src="${pageContext.request.contextPath}/resources/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+        <script src="${path}/resources/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+        <script src="${path}/resources/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
 		
 		<!-- Circle Progress JS -->
-		<script src="${pageContext.request.contextPath}/resources/js/circle-progress.min.js"></script>
+		<script src="${path}/resources/assets/js/circle-progress.min.js"></script>
 		
 		<!-- Custom JS -->
-		<script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
+		<script src="${path}/resources/assets/js/script.js"></script>
 		
 	</body>
 </html>

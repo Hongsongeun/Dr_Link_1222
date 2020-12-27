@@ -8,17 +8,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 		
 		<!-- Favicons -->
-		<link href="${pageContext.request.contextPath}/resources/img/favicon.png" rel="icon">
+		<link href="${path}/resources/img/favicon.png" rel="icon">
 		
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+		<link rel="stylesheet" href="${path}/resources/css/bootstrap.min.css">
 		
 		<!-- Fontawesome CSS -->
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/fontawesome/css/fontawesome.min.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/fontawesome/css/all.min.css">
+		<link rel="stylesheet" href="${path}/resources/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="${path}/resources/plugins/fontawesome/css/all.min.css">
 		
 		<!-- Main CSS -->
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+		<link rel="stylesheet" href="${path}/resources/css/style.css">
 	
 	<!-- 구글폰트 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
@@ -55,7 +55,7 @@ body {
 				</a>
 				<!-- <h1><a id="drlink" href="#" >Dr.Link</a></h1> -->
 				<a href="#" class="menu-logo">
-						<img src="${pageContext.request.contextPath}/resources/img/logo.jpg" class="img-fluid" alt="Logo">
+						<img src="${path}/resources/img/logo.jpg" class="img-fluid" alt="Logo">
 					</a>
 					
 			</div>
@@ -323,14 +323,14 @@ body {
 		<!-- /Main Wrapper -->
 	  
 		<!-- jQuery -->
-		<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+		<script src="${path}/resources/js/jquery.min.js"></script>
 		
 		<!-- Bootstrap Core JS -->
-		<script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+		<script src="${path}/resources/js/popper.min.js"></script>
+		<script src="${path}/resources/js/bootstrap.min.js"></script>
 		
 		<!-- Custom JS -->
-		<script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
+		<script src="${path}/resources/js/script.js"></script>
 		
 	</body>
 </html>
